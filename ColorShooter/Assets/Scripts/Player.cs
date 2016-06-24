@@ -49,6 +49,18 @@ public class Player : MonoBehaviour {
         {
             weapon.TryShoot(new Vector2(0,1),ColorKey.GetColorKey( ColorKey.EColorKey.Green));
         }
+        else if (Input.GetButtonDown(shootRedName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Red));
+        }
+        else if (Input.GetButtonDown(shootBlueName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Blue));
+        }
+        else if (Input.GetButtonDown(shootYellowName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Yellow));
+        }
     }
 	
 	// Update is called once per frame
@@ -65,9 +77,7 @@ public class Player : MonoBehaviour {
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         rb2D.velocity = movement * speed;
-
         //rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
-
         rb2D.position = new Vector2
         (
             Mathf.Clamp(rb2D.position.x, xMin, xMax),
