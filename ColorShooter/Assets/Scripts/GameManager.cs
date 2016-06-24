@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
     {
         int id = GetFreeIndexForEnemy();
         Debug.Assert(enemies[id] == null);
+        Debug.Assert(id >= 0);
 
         enemy.uniqueId = id;
         enemies[id] = enemy;
@@ -179,7 +180,6 @@ public class GameManager : MonoBehaviour
     {
         Debug.Assert(enemy.uniqueId != -1);
         Debug.Assert(enemies[enemy.uniqueId] == enemy);
-        Debug.Log("?");
 
         freeIndices.Enqueue(enemy.uniqueId);
         enemies[enemy.uniqueId] = null;
@@ -189,10 +189,12 @@ public class GameManager : MonoBehaviour
     {
         if (freeIndices.Count == 0)
         {
+            int oldCount = enemies.Count;
+
             for (int i = 0; i < 20; i++)
             {
                 enemies.Add(null);
-                freeIndices.Enqueue(enemies.Count + i);
+                freeIndices.Enqueue(oldCount + i);
             }
         }
 

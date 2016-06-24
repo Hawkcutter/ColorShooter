@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-            ColorKey = ColorKey.GetRandomColorKey();
+        ColorKey = ColorKey.GetRandomColorKey();
 
 
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
         if (IsRoot)
         {
-         //   GameManager.Instance.RegisterEnemy(this);
+            GameManager.Instance.RegisterEnemy(this);
         }
 
     }
@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsRoot)
         {
-         //   GameManager.Instance.UnregisterEnemy(this);
+            GameManager.Instance.UnregisterEnemy(this);
         }
     }
 
