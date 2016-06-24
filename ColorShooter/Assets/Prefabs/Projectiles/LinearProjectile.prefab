@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6149402}
   - 50: {fileID: 5072288}
   - 114: {fileID: 11441982}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LinearProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
