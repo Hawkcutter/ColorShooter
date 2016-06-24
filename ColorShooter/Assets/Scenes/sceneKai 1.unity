@@ -673,6 +673,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1001 &1892320222
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.6283307
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.4594216
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479948, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 420496, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 420496, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 6.6233377
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2038450591
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +757,7 @@ MonoBehaviour:
   - {fileID: 312023668}
   enemyPrefabs:
   - {fileID: 11494552, guid: b78868493c3224f47aeabe5057425b96, type: 2}
+  - {fileID: 11485614, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
   maxSpawnCooldown: 1
   enemyLayerName: Enemy
   playerLayerName: Player
