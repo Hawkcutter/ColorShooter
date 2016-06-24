@@ -41,8 +41,8 @@ public class HitpointManager : MonoBehaviour
         if (IgnoreDamage)
             return;
 
-        
-        if(damage != 0)
+
+        if (damage != 0)
         {
             if (enemy != null)
             {
@@ -50,18 +50,24 @@ public class HitpointManager : MonoBehaviour
                     this.curLife -= damage;
                 //TODO: maybe call on damaged
             }
-                if (curLife < 0)
-                {
-                    curLife = 0;
-                    Destroy(RootObject);
-                    //TODO: maybe call on destroyed
-                }
 
-                else if (curLife > maxLife)
-                {
-                    curLife = maxLife;
-                }
-            
+            else
+            {
+                this.curLife -= damage;
+            }
+
+            if (curLife < 0)
+            {
+                curLife = 0;
+                Destroy(RootObject);
+                //TODO: maybe call on destroyed
+            }
+
+            else if (curLife > maxLife)
+            {
+                curLife = maxLife;
+            }
+
         }
     }
 

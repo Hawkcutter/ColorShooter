@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     private string playerLayerName;
     private int playerLayer;
 
+    private List<Enemy> enemies;
+    private Queue<int> freeIndices;
+
 
     void Awake()
     {
@@ -155,4 +158,9 @@ public class GameManager : MonoBehaviour
         return playerLayer;
     }
 
+
+    public void RegisterEnemy(Enemy enemy)
+    {
+      
+    }
 }
