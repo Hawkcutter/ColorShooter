@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+
+    [SerializeField]
+    private PlayerBase playerBase;
+
     [SerializeField]
     private SpawnZone[] spawnZones;
 
@@ -27,11 +31,12 @@ public class GameManager : MonoBehaviour
     [Header("LayerNames")]
     [SerializeField]
     private string enemyLayerName;
+    private int enemyLayer;
+
     [SerializeField]
     private string playerLayerName;
-
-    private int enemyLayer;
     private int playerLayer;
+
 
     void Awake()
     {
@@ -52,6 +57,15 @@ public class GameManager : MonoBehaviour
         playerLayer = LayerMask.NameToLayer(playerLayerName);
     }
 
+
+    void Reset()
+    {
+        detroyedEnemies = 0;
+        gameTime = 0.0f;
+        curDifficulty = 0.0f;
+        curSpawnCooldown = 0.0f;
+    }
+
     void CreatePrefabList()
     {
         difficultySortedEnemyPrefabs = new List<List<Enemy>>();
@@ -62,6 +76,8 @@ public class GameManager : MonoBehaviour
             if (enemyPrefabs[i].Difficulty > maxDifficulty)
                 maxDifficulty = enemyPrefabs[i].Difficulty;
         }
+
+        maxDifficulty += 1;
 
         for (int i = 0; i <= maxDifficulty; i++)
             difficultySortedEnemyPrefabs.Add(new List<Enemy>());
@@ -117,7 +133,7 @@ public class GameManager : MonoBehaviour
         if(curSpawnCooldown <= 0.0f)
         {
             curSpawnCooldown = maxSpawnCooldown;
-            SpawnEnemy(1, ColorKey.GetRandomColorKey());
+            SpawnEnemy(0, ColorKey.GetRandomColorKey());
         }
     }
 

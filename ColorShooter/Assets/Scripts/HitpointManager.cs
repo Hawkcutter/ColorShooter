@@ -10,6 +10,8 @@ public class HitpointManager : MonoBehaviour
     private int maxLife;
     public int MaxLife{ get { return maxLife; } }
 
+    public bool IgnoreDamage = false;
+
     public float PercentLife { get { return (float)curLife / (float)maxLife; } }
 
     [SerializeField]
@@ -34,6 +36,9 @@ public class HitpointManager : MonoBehaviour
 
     public void Damage(int damage)
     {
+        if (IgnoreDamage)
+            return;
+
         if(damage != 0)
         {
             this.curLife -= damage;

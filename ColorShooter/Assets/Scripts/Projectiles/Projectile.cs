@@ -20,7 +20,6 @@ public abstract class Projectile : MonoBehaviour
     protected abstract void OnShotFired(Vector2 startPos, Vector2 direction);
 
 
-
     public void Init(Vector2 startPos, Vector2 direction, ColorKey colorKey, bool isPlayerBullet)
     {
         if (!projectileRoot)

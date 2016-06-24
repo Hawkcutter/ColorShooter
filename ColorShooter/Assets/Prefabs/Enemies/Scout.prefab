@@ -12,11 +12,10 @@ GameObject:
   - 114: {fileID: 11494552}
   - 114: {fileID: 11433430}
   - 114: {fileID: 11479548}
-  - 114: {fileID: 11495384}
   - 61: {fileID: 6197040}
-  - 114: {fileID: 11432540}
+  - 50: {fileID: 5091552}
   m_Layer: 8
-  m_Name: TestEnemy
+  m_Name: Scout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,12 +28,29 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.497535, y: 0.45225993, z: 0}
+  m_LocalPosition: {x: 8.222838, y: -1.8448697, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5091552
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100654}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &6197040
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -44,24 +60,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &11432540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4feb98e36732694f8544964e1b8886a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11494552}
-  weapon: {fileID: 11495384}
 --- !u!114 &11433430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,25 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakThroughDamage: 1
-  difficulty: 1
---- !u!114 &11495384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3433363b38a1f45980b791e66e5787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsPlayerWeapon: 0
-  UseCooldown: 1
-  spawnPosition: {fileID: 100654}
-  cooldown: 2
-  projectilePrefab: {fileID: 11441982, guid: ea6c7368ecc8e544fa7ac46529eeae39, type: 2}
-  RotateProjectileToDirection: 1
-  ApplyStartPos: 1
+  difficulty: 0
 --- !u!212 &21282234
 SpriteRenderer:
   m_ObjectHideFlags: 1

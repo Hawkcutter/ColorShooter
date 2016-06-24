@@ -12,8 +12,6 @@ public class LinearProjectile : Projectile
     protected override void OnShotFired(Vector2 startPos, Vector2 direction)
     {
         this.direction = direction;
-
-        Debug.Log(LayerMask.LayerToName(targetLayer));
     }
 
 

@@ -2,24 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-public class MoveDownPattern : MovementPattern
+public class MoveDownPattern : MonoBehaviour
 {
     [SerializeField]
     private float Speed;
 
-    protected override void OnStart()
+
+    void FixedUpdate()
     {
-
-    }
-
-    protected override void OnUpdate()
-    {
-
-    }
-
-    protected override void OnFixedUpdate()
-    {
-        RootObject.transform.position += new Vector3(0.0f, -Speed * Time.fixedDeltaTime, 0.0f);
+        gameObject.transform.position += new Vector3(0.0f, -Speed * Time.fixedDeltaTime, 0.0f);
     }
 
 }

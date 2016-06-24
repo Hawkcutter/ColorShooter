@@ -13,14 +13,5 @@ public class Enemy : MonoBehaviour
     private int difficulty;
     public int Difficulty { get { return difficulty; } }
 
-    [SerializeField]
-    private HitpointManager hitPointManager;
 
-    [SerializeField]
-    private MovementPattern movementPattern;
-
-    void Update()
-    {
-        //GetComponent<Weapon>().TryShoot(new Vector2(0.0f, -1.0f), ColorKey.GetRandomColorKey());
-    }
 }
