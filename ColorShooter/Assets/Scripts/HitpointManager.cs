@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HitpointManager : MonoBehaviour
 {
+    private Enemy enemy;
     [SerializeField]
     private int curLife;
     public int CurLife { get { return curLife; } }
@@ -32,29 +33,35 @@ public class HitpointManager : MonoBehaviour
         {
             this.maxLife = curLife;
         }
+        enemy = RootObject.GetComponent<Enemy>();
     }
 
-    public void Damage(int damage)
+    public void Damage(int damage, ColorKey bulletColor)
     {
         if (IgnoreDamage)
             return;
 
+        
         if(damage != 0)
         {
-            this.curLife -= damage;
-            //TODO: maybe call on damaged
-
-            if (curLife < 0)
+            if (enemy != null)
             {
-                curLife = 0;
-                Destroy(RootObject);
-                //TODO: maybe call on destroyed
+                if (bulletColor == enemy.ColorKey)
+                    this.curLife -= damage;
+                //TODO: maybe call on damaged
             }
+                if (curLife < 0)
+                {
+                    curLife = 0;
+                    Destroy(RootObject);
+                    //TODO: maybe call on destroyed
+                }
 
-            else if (curLife > maxLife)
-            {
-                curLife = maxLife;
-            }
+                else if (curLife > maxLife)
+                {
+                    curLife = maxLife;
+                }
+            
         }
     }
 

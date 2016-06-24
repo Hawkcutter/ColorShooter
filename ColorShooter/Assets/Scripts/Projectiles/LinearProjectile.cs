@@ -5,13 +5,21 @@ public class LinearProjectile : Projectile
 {
     [SerializeField]
     private float speed;
+    private float lifetime;
     
     private Vector2 direction;
+    public SpriteRenderer spriteRenderer;
 
 
     protected override void OnShotFired(Vector2 startPos, Vector2 direction)
     {
+        this.lifetime = 5.0f;
+
         this.direction = direction;
+        spriteRenderer = projectileRoot.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+            spriteRenderer.color = ColorKey.RgbColor;
+        Debug.Log(LayerMask.LayerToName(targetLayer));
     }
 
 
@@ -23,10 +31,17 @@ public class LinearProjectile : Projectile
        {
            if (hitpointManager.gameObject.layer == targetLayer)
            {
-               hitpointManager.Damage(this.Damage);
+               hitpointManager.Damage(this.Damage, this.ColorKey);
                Destroy(projectileRoot);
            }
        }
+    }
+    void Update()
+    {
+        this.lifetime -= Time.deltaTime;
+
+        if (this.lifetime <= 0)
+            Destroy(projectileRoot);
     }
 
     void FixedUpdate()

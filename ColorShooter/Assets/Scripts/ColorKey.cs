@@ -25,7 +25,8 @@ public class ColorKey
     {
         Debug.Assert(colors != null);
 
-        int randVal = (int)(UnityEngine.Random.value * colors.Length);
+        //TODO, Hack damit keine weiﬂen gegner spawnen
+        int randVal = (int)(UnityEngine.Random.value * (colors.Length-1));
         return colors[randVal];
     }
     public static Color GetColorOf(EColorKey key)

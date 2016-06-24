@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     string shootBlueName;
     string shootYellowName;
     public Weapon weapon;
+
+    float xMin, xMax, yMin, yMax;
     
 
 	// Use this for initialization
@@ -28,8 +30,11 @@ public class Player : MonoBehaviour {
         shootRedName        = "FireRed_P"       + playerID;
         shootBlueName       = "FireBlue_P"      + playerID;
         shootYellowName     = "FireYellow_P"    + playerID;
-        
 
+        xMin = -6.0f;
+        xMax = 6.0f;
+        yMin = -4.6f;
+        yMax = 4.6f;
       
 	}
 
@@ -43,6 +48,18 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown(shootGreenName))
         {
             weapon.TryShoot(new Vector2(0,1),ColorKey.GetColorKey( ColorKey.EColorKey.Green));
+        }
+        else if (Input.GetButtonDown(shootRedName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Red));
+        }
+        else if (Input.GetButtonDown(shootBlueName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Blue));
+        }
+        else if (Input.GetButtonDown(shootYellowName))
+        {
+            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Yellow));
         }
     }
 	
@@ -59,10 +76,12 @@ public class Player : MonoBehaviour {
             moveVertical = 0f;
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        velocity = movement * speed;
-
-        rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
-
-	
+        rb2D.velocity = movement * speed;
+        //rb2D.MovePosition(rb2D.position + velocity * Time.fixedDeltaTime);
+        rb2D.position = new Vector2
+        (
+            Mathf.Clamp(rb2D.position.x, xMin, xMax),
+            Mathf.Clamp(rb2D.position.y, yMin, yMax)
+        );
 	}
 }
