@@ -21,7 +21,7 @@ public class SpriteImporter : AssetPostprocessor
             //only process sprites:
             if (textureImporter.textureType == TextureImporterType.Sprite)
             {
-                textureImporter.spritePixelsPerUnit = PIXELS_PER_UNIT;
+                //textureImporter.spritePixelsPerUnit = PIXELS_PER_UNIT;
                 textureImporter.mipmapEnabled = false;
                 textureImporter.filterMode = FilterMode.Point;
                 textureImporter.textureFormat = TextureImporterFormat.RGBA32;
