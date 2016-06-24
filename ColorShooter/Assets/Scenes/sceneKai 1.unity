@@ -707,6 +707,7 @@ MonoBehaviour:
   - {fileID: 312023668}
   enemyPrefabs:
   - {fileID: 11494552, guid: b78868493c3224f47aeabe5057425b96, type: 2}
+  - {fileID: 11485614, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
   maxSpawnCooldown: 1
   enemyLayerName: Enemy
   playerLayerName: Player
