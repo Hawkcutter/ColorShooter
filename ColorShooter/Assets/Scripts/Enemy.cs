@@ -21,6 +21,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        GetComponent<Weapon>().TryShoot(new Vector2(0.0f, -1.0f), ColorKey.GetRandomColorKey());
+        //GetComponent<Weapon>().TryShoot(new Vector2(0.0f, -1.0f), ColorKey.GetRandomColorKey());
     }
 }

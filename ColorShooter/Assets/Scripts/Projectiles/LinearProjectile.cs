@@ -12,14 +12,12 @@ public class LinearProjectile : Projectile
     protected override void OnShotFired(Vector2 startPos, Vector2 direction)
     {
         this.direction = direction;
+
+        Debug.Log(LayerMask.LayerToName(targetLayer));
     }
 
-    protected override void OnHitUpdate(Collider2D collider)
-    {
-       
-    }
 
-    protected override void OnHitEnter(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
        HitpointManager hitpointManager = collider.GetComponent<HitpointManager>();
 
@@ -33,23 +31,10 @@ public class LinearProjectile : Projectile
        }
     }
 
-    protected override void OnHitExit(Collider2D collider)
-    {
-        
-    }
-
-    protected override void OnShotDestroyed()
-    {
-        
-    }
-
-    protected override void OnFixedUpdate()
+    void FixedUpdate()
     {
         gameObject.transform.position += new Vector3(direction.x * Time.fixedDeltaTime * speed, direction.y * Time.fixedDeltaTime * speed, 0.0f);
     }
 
-    protected override void OnUpdate()
-    {
-        
-    }
+
 }
