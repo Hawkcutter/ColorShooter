@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ColorKey
 {
-    public enum EColorKey { Red, Blue, Green, Yellow, Count }
+    public enum EColorKey { Red, Blue, Green, Yellow,       White,          Count }
 
     private static ColorKey[] colors;
 
@@ -50,10 +50,15 @@ public class ColorKey
         else if (key == EColorKey.Yellow)
             color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
 
+        else if (key == EColorKey.White)
+        {
+            color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        }
+
         else
         {
+            color = new Color(1.0f, 0.0f, 1.0f, 1.0f);
             Debug.Log("Not allowed!");
-            color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
         }
     }
 }

@@ -18,4 +18,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     private MovementPattern movementPattern;
+
+    void Update()
+    {
+        GetComponent<Weapon>().TryShoot(new Vector2(0.0f, -1.0f), ColorKey.GetRandomColorKey());
+    }
 }

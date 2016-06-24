@@ -23,6 +23,16 @@ public class GameManager : MonoBehaviour
     private float maxSpawnCooldown = 1.0f;
     private float curSpawnCooldown;
 
+
+    [Header("LayerNames")]
+    [SerializeField]
+    private string enemyLayerName;
+    [SerializeField]
+    private string playerLayerName;
+
+    private int enemyLayer;
+    private int playerLayer;
+
     void Awake()
     {
         if(Instance != null)
@@ -37,6 +47,9 @@ public class GameManager : MonoBehaviour
         CreatePrefabList();
 
         ColorKey.InitColors();
+
+        enemyLayer = LayerMask.NameToLayer(enemyLayerName);
+        playerLayer = LayerMask.NameToLayer(playerLayerName);
     }
 
     void CreatePrefabList()
@@ -114,6 +127,16 @@ public class GameManager : MonoBehaviour
         {
             detroyedEnemies++;
         }
+    }
+
+    public int GetEnemyLayer()
+    {
+        return enemyLayer;
+    }
+
+    public int GetPlayerLayer()
+    {
+        return playerLayer;
     }
 
 }
