@@ -180,11 +180,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 470168, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.05
+      value: -2.461
       objectReference: {fileID: 0}
     - target: {fileID: 470168, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: -1.041
       objectReference: {fileID: 0}
     - target: {fileID: 470168, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: m_LocalPosition.z
@@ -220,16 +220,25 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 470168, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 470168, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11460194, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
       propertyPath: weapon
       value: 
       objectReference: {fileID: 770201474}
+    - target: {fileID: 5004080, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 21244848, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29ba214444546d1479ceb03a55d312f4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d09b03d5f78ded4db03ca1b668e0e54, type: 2}
   m_IsPrefabParent: 0
@@ -400,7 +409,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1.2375, y: 0.9375}
 --- !u!1 &1050178194
 GameObject:
   m_ObjectHideFlags: 0
