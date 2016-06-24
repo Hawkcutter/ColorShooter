@@ -7,6 +7,11 @@ public class ColorKey
 
     private static ColorKey[] colors;
 
+    public static ColorKey GetColorKey(EColorKey key)
+    {
+        return colors[(int)key];
+    }
+
     public static void InitColors()
     {
         colors = new ColorKey[(int)EColorKey.Count];

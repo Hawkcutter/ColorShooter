@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     string shootRedName;
     string shootBlueName;
     string shootYellowName;
+    public Weapon weapon;
     
 
 	// Use this for initialization
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetButtonDown(shootGreenName))
         {
-            Shoot();
+            weapon.TryShoot(new Vector2(0,1),ColorKey.GetColorKey( ColorKey.EColorKey.Green));
         }
     }
 	
