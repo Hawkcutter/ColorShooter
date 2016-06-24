@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
     private int playerLayer;
 
 
+    private List<Enemy> enemies;
+    private Queue<int> freeIndices;
+
+
     void Awake()
     {
         if(Instance != null)
@@ -56,6 +60,17 @@ public class GameManager : MonoBehaviour
         enemyLayer = LayerMask.NameToLayer(enemyLayerName);
         playerLayer = LayerMask.NameToLayer(playerLayerName);
 
+
+        enemies = new List<Enemy>();
+        freeIndices = new Queue<int>();
+
+        for (int i = 0; i < 10; i++)
+        {
+            enemies.Add(null);
+            freeIndices.Enqueue(i);
+        }
+
+      
     }
 
 
@@ -104,12 +119,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void SpawnEnemy(int difficulty)
-    {
-        SpawnEnemy(difficulty, ColorKey.GetRandomColorKey());
-    }
 
-    void SpawnEnemy(int difficulty, ColorKey color)
+    void SpawnEnemy(int difficulty)
     {
         Enemy prefab = GetEnemyPrefabOfDifficulty(difficulty);
 
@@ -117,9 +128,7 @@ public class GameManager : MonoBehaviour
 
         SpawnZone zone = spawnZones[(int)(Random.value * spawnZones.Length)];
         createdEnemy.transform.position = zone.GetPointInsideArea();
-        
-       createdEnemy.GetComponent<Enemy>().ColorKey = color;
-       createdEnemy.GetComponent<SpriteRenderer>().color = color.RgbColor;
+       
     }
 
 
@@ -134,7 +143,7 @@ public class GameManager : MonoBehaviour
         if(curSpawnCooldown <= 0.0f)
         {
             curSpawnCooldown = maxSpawnCooldown;
-            SpawnEnemy(0, ColorKey.GetRandomColorKey());
+            SpawnEnemy(0);
         }
     }
 
@@ -159,6 +168,34 @@ public class GameManager : MonoBehaviour
 
     public void RegisterEnemy(Enemy enemy)
     {
-        
+        int id = GetFreeIndexForEnemy();
+        Debug.Assert(enemies[id] == null);
+
+        enemy.uniqueId = id;
+        enemies[id] = enemy;
+    }
+
+    public void UnregisterEnemy(Enemy enemy)
+    {
+        Debug.Assert(enemy.uniqueId != -1);
+        Debug.Assert(enemies[enemy.uniqueId] == enemy);
+        Debug.Log("?");
+
+        freeIndices.Enqueue(enemy.uniqueId);
+        enemies[enemy.uniqueId] = null;
+    }
+
+    private int GetFreeIndexForEnemy()
+    {
+        if (freeIndices.Count == 0)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                enemies.Add(null);
+                freeIndices.Enqueue(enemies.Count + i);
+            }
+        }
+
+        return freeIndices.Dequeue();
     }
 }
