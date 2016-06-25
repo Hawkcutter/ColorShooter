@@ -338,7 +338,7 @@ GameObject:
   - 4: {fileID: 770201473}
   - 114: {fileID: 770201474}
   m_Layer: 9
-  m_Name: GameObject
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,6 +375,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 11441982, guid: ea6c7368ecc8e544fa7ac46529eeae39, type: 2}
   RotateProjectileToDirection: 1
   ApplyStartPos: 1
+  DamageUpgradeCount: 0
+  SpeedUpgradeCount: 0
+  ShotUpgradeCount: 0
 --- !u!1 &938394362
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5313968edebbd16429f99d9ac5cb713b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerBaseLifes: 10
   playerBase: {fileID: 938394366}
   spawnZones:
   - {fileID: 88608177}

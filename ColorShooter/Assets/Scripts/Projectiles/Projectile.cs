@@ -12,9 +12,7 @@ public abstract class Projectile : MonoBehaviour, IUnique
     protected GameObject projectileRoot;
     public GameObject ProjectileRoot { get; protected set; }
 
-    [SerializeField]
-    private int damage;
-    public int Damage { get { return damage; } }
+    public int Damage;
 
     public bool IsPlayerBullet { get; private set; }
 

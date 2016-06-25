@@ -3,8 +3,9 @@ using System.Collections;
 
 public class LinearProjectile : Projectile 
 {
-    [SerializeField]
-    private float speed;
+
+    public float Speed;
+
     private float lifetime;
     
     private Vector2 direction;
@@ -46,7 +47,7 @@ public class LinearProjectile : Projectile
 
     void FixedUpdate()
     {
-        gameObject.transform.position += new Vector3(direction.x * Time.fixedDeltaTime * speed, direction.y * Time.fixedDeltaTime * speed, 0.0f);
+        gameObject.transform.position += new Vector3(direction.x * Time.fixedDeltaTime * Speed, direction.y * Time.fixedDeltaTime * Speed, 0.0f);
     }
 
 

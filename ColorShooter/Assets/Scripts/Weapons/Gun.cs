@@ -5,7 +5,7 @@ using System;
 public class Gun : Weapon
 {
     [SerializeField]
-    private Projectile projectilePrefab;
+    private LinearProjectile projectilePrefab;
 
     private const int MAX_NUM_UGPRADES= 4;
 
@@ -20,7 +20,7 @@ public class Gun : Weapon
     {
         if (projectilePrefab)
         {
-            Projectile projectile = InstantiateProjectile(projectilePrefab);
+            LinearProjectile projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
 
             if (ApplyStartPos)
                 projectile.transform.position = startPos;
