@@ -1,13 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IUnique
 {
-   
-    public int uniqueId = -1;
     
 
-    public ColorKey ColorKey;
+    public int UniqueId { get; set; }
+
+    public ColorKey ColorKey { get; private set; }
          
     [SerializeField]
     private int breakThroughDamage;
@@ -16,6 +16,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int difficulty;
     public int Difficulty { get { return difficulty; } }
+
+    [SerializeField]
+    private Enemy shieldObject;
+
+    public Enemy ShieldObject { get { return shieldObject; } }
 
     public bool IsRoot = true;
 
@@ -46,5 +51,12 @@ public class Enemy : MonoBehaviour
             GameManager.Instance.UnregisterEnemy(this);
         }
     }
+
+
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+
 
 }
