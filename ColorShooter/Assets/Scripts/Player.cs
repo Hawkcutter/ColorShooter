@@ -18,7 +18,6 @@ public class Player : MonoBehaviour {
     public Weapon weapon;
 
     float xMin, xMax, yMin, yMax;
-    
 
 	// Use this for initialization
 	void Start () 

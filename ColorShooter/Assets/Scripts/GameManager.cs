@@ -51,6 +51,15 @@ public class GameManager : MonoBehaviour
 
     public bool SpawnEnemies;
 
+    [SerializeField]
+    private LinearProjectile redBulletPrefab;
+    [SerializeField]
+    private LinearProjectile greenBulletPrefab;
+    [SerializeField]
+    private LinearProjectile blueBulletPrefab;
+    [SerializeField]
+    private LinearProjectile yellowBulletPrefab;
+
     void Awake()
     {
         if(Instance != null)
@@ -64,14 +73,16 @@ public class GameManager : MonoBehaviour
         
         CreatePrefabList();
 
-        ColorKey.InitColors();
+        ColorKey.InitColors(redBulletPrefab, greenBulletPrefab, blueBulletPrefab, yellowBulletPrefab);
 
         enemyLayer = LayerMask.NameToLayer(enemyLayerName);
         playerLayer = LayerMask.NameToLayer(playerLayerName);
 
         enemies = new UniqueList<Enemy>(10);
         projectiles = new UniqueList<Projectile>(50);
-        ui.UpdateLifes(playerBase.Lifes);
+
+        if(ui)
+            ui.UpdateLifes(playerBase.Lifes);
 
       
     }
@@ -99,7 +110,9 @@ public class GameManager : MonoBehaviour
 
         playerBase.SetLifes(playerBaseLifes);
         highscore = 0;
-        ui.UpdateScore(highscore);
+
+        if(ui)
+            ui.UpdateScore(highscore);
 
     }
 
@@ -201,9 +214,13 @@ public class GameManager : MonoBehaviour
             if(manager.CurLife <= 0)
             {
                 highscore += enemy.score;
-                ui.UpdateScore(highscore);
+
+                if(ui)
+                    ui.UpdateScore(highscore);
             }
-            ui.UpdateLifes(playerBase.Lifes);
+
+            if(ui)
+                ui.UpdateLifes(playerBase.Lifes);
 
             detroyedEnemies++;
             

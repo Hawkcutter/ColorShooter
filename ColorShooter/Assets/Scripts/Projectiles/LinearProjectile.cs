@@ -18,8 +18,8 @@ public class LinearProjectile : Projectile
         this.direction = direction;
         spriteRenderer = projectileRoot.GetComponent<SpriteRenderer>();
 
-        if (spriteRenderer != null)
-            spriteRenderer.color = ColorKey.RgbColor;
+        //if (spriteRenderer != null)
+           // spriteRenderer.color = ColorKey.RgbColor;
     }
 
 

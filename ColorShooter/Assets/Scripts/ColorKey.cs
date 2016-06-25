@@ -5,6 +5,9 @@ public class ColorKey
 {
     public enum EColorKey { Red, Blue, Green, Yellow,       White,          Count }
 
+
+
+    private static LinearProjectile[] coloredProjectiles;
     private static ColorKey[] colors;
 
     public static ColorKey GetColorKey(EColorKey key)
@@ -12,7 +15,7 @@ public class ColorKey
         return colors[(int)key];
     }
 
-    public static void InitColors()
+    public static void InitColors(LinearProjectile redPrefab, LinearProjectile greenPrefab, LinearProjectile bluePrefab, LinearProjectile yellowPrefab)
     {
         colors = new ColorKey[(int)EColorKey.Count];
 
@@ -20,6 +23,12 @@ public class ColorKey
         {
             colors[i] = new ColorKey((EColorKey)i);
         }
+
+        coloredProjectiles = new LinearProjectile[4];
+        coloredProjectiles[(int)EColorKey.Red] = redPrefab;
+        coloredProjectiles[(int)EColorKey.Blue] = bluePrefab;
+        coloredProjectiles[(int)EColorKey.Green] = greenPrefab;
+        coloredProjectiles[(int)EColorKey.Yellow] = yellowPrefab;
     }
     public static ColorKey GetRandomColorKey()
     {
@@ -66,6 +75,11 @@ public class ColorKey
             color = new Color(1.0f, 0.0f, 1.0f, 1.0f);
             Debug.Log("Not allowed!");
         }
+    }
+
+    public static LinearProjectile GetProjectileFromColor(EColorKey eColorKey)
+    {
+        return coloredProjectiles[(int)eColorKey];
     }
 }
 

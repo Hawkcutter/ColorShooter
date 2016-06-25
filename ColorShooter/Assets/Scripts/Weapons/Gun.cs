@@ -74,7 +74,13 @@ public class Gun : Weapon
 
     private void MyShoot(Vector2 startPos, Vector2 direction, ColorKey color)
     {
-        LinearProjectile projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
+         LinearProjectile projectile = null;
+
+        if(IsPlayerWeapon)
+            projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
+
+        else
+            projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
 
         projectile.Speed = SpeedAtLevel[speedUpgradeCount];
         projectile.Damage = DamageAtLevel[damageUpgradeCount];
