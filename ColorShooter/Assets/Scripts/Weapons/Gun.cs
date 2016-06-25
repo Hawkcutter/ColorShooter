@@ -15,7 +15,7 @@ public class Gun : Weapon
     [SerializeField]
     public int speedUpgradeCount = 0;
     [SerializeField]
-    private int numShotUpgradeCount = 0;
+    public int numShotUpgradeCount = 0;
 
     public int[] DamageAtLevel;
     public float[] CooldownAtLevel;
