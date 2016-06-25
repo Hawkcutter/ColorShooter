@@ -4,9 +4,8 @@ using UnityEngine.UI;
 
 public class UserInterface : MonoBehaviour {
 
-    
-
     public Text scoreText;
+    public Text lifeText;
     
 
 	// Use this for initialization
@@ -24,5 +23,11 @@ public class UserInterface : MonoBehaviour {
     {
         if (scoreText != null)
             scoreText.text = "Score: " + score;
+    }
+
+    public void UpdateLifes(int lifes)
+    {
+        if (lifeText != null)
+            lifeText.text = "Lifes: " + lifes;
     }
 }

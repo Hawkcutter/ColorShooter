@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
         enemies = new UniqueList<Enemy>(10);
         projectiles = new UniqueList<Projectile>(50);
+        ui.UpdateLifes(playerBase.Lifes);
 
       
     }
@@ -196,13 +197,13 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            HitpointManager manager = enemy.GetComponent<HitpointManager>();
-           
+            HitpointManager manager = enemy.GetComponent<HitpointManager>();         
             if(manager.CurLife <= 0)
             {
                 highscore += enemy.score;
                 ui.UpdateScore(highscore);
             }
+            ui.UpdateLifes(playerBase.Lifes);
 
             detroyedEnemies++;
             
