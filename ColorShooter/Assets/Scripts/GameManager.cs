@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField]
+    private int playerBaseLifes = 10;
 
     [SerializeField]
     private PlayerBase playerBase;
@@ -37,10 +39,10 @@ public class GameManager : MonoBehaviour
     private string playerLayerName;
     private int playerLayer;
 
+    private UniqueList<Enemy> enemies;
+    private UniqueList<Projectile> projectiles;
 
-    private List<Enemy> enemies;
-    private Queue<int> freeIndices;
-
+    public bool SpawnEnemies;
 
     void Awake()
     {
@@ -60,26 +62,33 @@ public class GameManager : MonoBehaviour
         enemyLayer = LayerMask.NameToLayer(enemyLayerName);
         playerLayer = LayerMask.NameToLayer(playerLayerName);
 
-
-        enemies = new List<Enemy>();
-        freeIndices = new Queue<int>();
-
-        for (int i = 0; i < 10; i++)
-        {
-            enemies.Add(null);
-            freeIndices.Enqueue(i);
-        }
+        enemies = new UniqueList<Enemy>(10);
+        projectiles = new UniqueList<Projectile>(50);
 
       
     }
 
-
-    void Reset()
+    public void Reset()
     {
         detroyedEnemies = 0;
         gameTime = 0.0f;
         curDifficulty = 0.0f;
         curSpawnCooldown = 0.0f;
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies.Get(i) != null)
+                Destroy(enemies.Get(i).gameObject);
+        }
+
+
+        for (int i = 0; i < projectiles.Count; i++)
+        {
+            if (projectiles.Get(i) != null)
+                Destroy(projectiles.Get(i).gameObject);
+        }
+
+        playerBase.SetLifes(playerBaseLifes);
     }
 
     void CreatePrefabList()
@@ -122,13 +131,15 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemy(int difficulty)
     {
-        Enemy prefab = GetEnemyPrefabOfDifficulty(difficulty);
+        if (SpawnEnemies)
+        {
+            Enemy prefab = GetEnemyPrefabOfDifficulty(difficulty);
 
-        GameObject createdEnemy = Instantiate(prefab.gameObject);
+            GameObject createdEnemy = Instantiate(prefab.gameObject);
 
-        SpawnZone zone = spawnZones[(int)(Random.value * spawnZones.Length)];
-        createdEnemy.transform.position = zone.GetPointInsideArea();
-       
+            SpawnZone zone = spawnZones[(int)(Random.value * spawnZones.Length)];
+            createdEnemy.transform.position = zone.GetPointInsideArea();
+        }
     }
 
 
@@ -144,6 +155,11 @@ public class GameManager : MonoBehaviour
         {
             curSpawnCooldown = maxSpawnCooldown;
             SpawnEnemy(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
         }
     }
 
@@ -168,36 +184,23 @@ public class GameManager : MonoBehaviour
 
     public void RegisterEnemy(Enemy enemy)
     {
-        int id = GetFreeIndexForEnemy();
-        Debug.Assert(enemies[id] == null);
-        Debug.Assert(id >= 0);
-
-        enemy.uniqueId = id;
-        enemies[id] = enemy;
+        enemies.Add(enemy);
     }
 
     public void UnregisterEnemy(Enemy enemy)
     {
-        Debug.Assert(enemy.uniqueId != -1);
-        Debug.Assert(enemies[enemy.uniqueId] == enemy);
-
-        freeIndices.Enqueue(enemy.uniqueId);
-        enemies[enemy.uniqueId] = null;
+        enemies.Remove(enemy);
     }
 
-    private int GetFreeIndexForEnemy()
+    public void RegisterProjectile(Projectile projectile)
     {
-        if (freeIndices.Count == 0)
-        {
-            int oldCount = enemies.Count;
-
-            for (int i = 0; i < 20; i++)
-            {
-                enemies.Add(null);
-                freeIndices.Enqueue(oldCount + i);
-            }
-        }
-
-        return freeIndices.Dequeue();
+        projectiles.Add(projectile);
     }
+
+    public void UnregisterProjectile(Projectile projectile)
+    {
+        projectiles.Remove(projectile);
+    }
+
+
 }

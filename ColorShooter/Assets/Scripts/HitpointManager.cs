@@ -4,6 +4,7 @@ using System.Collections;
 public class HitpointManager : MonoBehaviour
 {
     private Enemy enemy;
+
     [SerializeField]
     private int curLife;
     public int CurLife { get { return curLife; } }
@@ -23,7 +24,7 @@ public class HitpointManager : MonoBehaviour
         if (RootObject == null)
             RootObject = gameObject;
 
-        if (curLife == 0)
+        if (curLife <= 0)
         {
             Debug.Log(gameObject.name + " has 0 life upon construction, destroying it!");
             Destroy(RootObject);
@@ -33,6 +34,7 @@ public class HitpointManager : MonoBehaviour
         {
             this.maxLife = curLife;
         }
+
         enemy = RootObject.GetComponent<Enemy>();
     }
 
@@ -41,33 +43,39 @@ public class HitpointManager : MonoBehaviour
         if (IgnoreDamage)
             return;
 
-
         if (damage != 0)
         {
+            //it is an enemy:
             if (enemy != null)
             {
-                if (bulletColor == enemy.ColorKey)
-                    this.curLife -= damage;
-                //TODO: maybe call on damaged
+                if (enemy.ShieldObject != null)
+                    return;
+
+                else if (bulletColor == enemy.ColorKey)
+                    ChangeHealth(-damage);         
             }
 
+            //it is a player
             else
             {
-                this.curLife -= damage;
+                ChangeHealth(-damage);
             }
+        }
+    }
 
-            if (curLife < 0)
-            {
-                curLife = 0;
-                Destroy(RootObject);
-                //TODO: maybe call on destroyed
-            }
+    private void ChangeHealth(int delta)
+    {
+        this.curLife += delta;
 
-            else if (curLife > maxLife)
-            {
-                curLife = maxLife;
-            }
+        if (curLife < 0)
+        {
+            curLife = 0;
+            Destroy(RootObject);
+        }
 
+        else if (curLife > maxLife)
+        {
+            curLife = maxLife;
         }
     }
 

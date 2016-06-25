@@ -183,7 +183,8 @@ MonoBehaviour:
   uniqueId: -1
   breakThroughDamage: 1
   difficulty: 0
-  IsRoot: 1
+  shieldObject: {fileID: 0}
+  IsRoot: 0
 --- !u!114 &11470492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,6 +213,7 @@ MonoBehaviour:
   uniqueId: -1
   breakThroughDamage: 1
   difficulty: 0
+  shieldObject: {fileID: 11468648}
   IsRoot: 1
 --- !u!212 &21242814
 SpriteRenderer:

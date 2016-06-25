@@ -6,6 +6,11 @@ public class PlayerBase : MonoBehaviour
     [SerializeField]
     private int lifes;
 
+    public void SetLifes(int amount)
+    {
+        this.lifes = amount;
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         Enemy enemy = collider.GetComponent<Enemy>();
@@ -14,10 +19,10 @@ public class PlayerBase : MonoBehaviour
         {
             lifes -= enemy.BreakThroughDamage;
 
-            if (lifes < 0)
+            if (lifes <= 0)
             {
                 lifes = 0;
-                //TODO: gameover
+                GameManager.Instance.Reset();
             }
 
             Destroy(enemy.gameObject);

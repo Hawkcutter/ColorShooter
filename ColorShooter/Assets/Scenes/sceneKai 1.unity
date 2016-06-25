@@ -711,6 +711,7 @@ MonoBehaviour:
   maxSpawnCooldown: 1
   enemyLayerName: Enemy
   playerLayerName: Player
+  SpawnEnemies: 1
 --- !u!4 &2038450593
 Transform:
   m_ObjectHideFlags: 0
