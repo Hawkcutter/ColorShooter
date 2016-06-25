@@ -12,9 +12,7 @@ public abstract class Projectile : MonoBehaviour, IUnique
     protected GameObject projectileRoot;
     public GameObject ProjectileRoot { get; protected set; }
 
-    [SerializeField]
-    private int damage;
-    public int Damage { get { return damage; } }
+    public int Damage;
 
     public bool IsPlayerBullet { get; private set; }
 
@@ -30,12 +28,6 @@ public abstract class Projectile : MonoBehaviour, IUnique
     void OnDestroy()
     {
         GameManager.Instance.UnregisterProjectile(this);
-    }
-
-    public void Init(Vector2 startPos, Vector2 direction, float speed, ColorKey colorKey, bool isPlayerBullet)
-    {
-        
-        Init(startPos, direction, colorKey, isPlayerBullet);
     }
 
     public void Init(Vector2 startPos, Vector2 direction, ColorKey colorKey, bool isPlayerBullet)
