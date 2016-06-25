@@ -25,8 +25,7 @@ public class Enemy : MonoBehaviour, IUnique
     public bool IsRoot = true;
 
     public int score;
-    public int Score { get { return score; } }
-
+  
     void Start()
     {
         ColorKey = ColorKey.GetRandomColorKey();

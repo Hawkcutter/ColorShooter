@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public UserInterface ui;
+    
+
+
     [SerializeField]
     private int playerBaseLifes = 10;
 
@@ -78,6 +81,7 @@ public class GameManager : MonoBehaviour
         gameTime = 0.0f;
         curDifficulty = 0.0f;
         curSpawnCooldown = 0.0f;
+        highscore = 0;
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -167,16 +171,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnEnemyDestroyed(Enemy enemy)
-    {
-        if(enemy != null)
-        {
-            Debug.Log("Destroy");
-            detroyedEnemies++;
-            highscore += enemy.Score;
-            ui.UpdateScore(highscore);
-        }
-    }
+
 
     public int GetEnemyLayer()
     {
@@ -196,7 +191,14 @@ public class GameManager : MonoBehaviour
 
     public void UnregisterEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
+        if (enemy != null)
+        {
+            detroyedEnemies++;
+            highscore += enemy.score;
+            ui.UpdateScore(highscore);
+            enemies.Remove(enemy);
+        }
+        
     }
 
     public void RegisterProjectile(Projectile projectile)
