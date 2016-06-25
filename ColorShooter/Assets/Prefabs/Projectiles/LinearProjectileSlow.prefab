@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5072288}
   - 114: {fileID: 11441982}
   m_Layer: 10
-  m_Name: LinearProjectile
+  m_Name: LinearProjectileSlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileRoot: {fileID: 187616}
   damage: 1
-  speed: 4
+  speed: 5
+  spriteRenderer: {fileID: 0}
 --- !u!212 &21217232
 SpriteRenderer:
   m_ObjectHideFlags: 1

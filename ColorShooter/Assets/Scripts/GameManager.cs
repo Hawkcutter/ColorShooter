@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public UserInterface ui;
 
     [SerializeField]
     private PlayerBase playerBase;
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     private float curDifficulty;
     public float CurrentGameDifficulty { get { return curDifficulty; } }
+
+    private int highscore;
+    public int Highscore { get { return highscore; } }
 
     [SerializeField]
     private Enemy[] enemyPrefabs;
@@ -151,7 +155,10 @@ public class GameManager : MonoBehaviour
     {
         if(enemy != null)
         {
+            Debug.Log("Destroy");
             detroyedEnemies++;
+            highscore += enemy.Score;
+            ui.UpdateScore(highscore);
         }
     }
 

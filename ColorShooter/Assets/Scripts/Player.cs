@@ -45,19 +45,19 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetButtonDown(shootGreenName))
+        if (Input.GetButton(shootGreenName))
         {
             weapon.TryShoot(new Vector2(0,1),ColorKey.GetColorKey( ColorKey.EColorKey.Green));
         }
-        else if (Input.GetButtonDown(shootRedName))
+        else if (Input.GetButton(shootRedName))
         {
             weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Red));
         }
-        else if (Input.GetButtonDown(shootBlueName))
+        else if (Input.GetButton(shootBlueName))
         {
             weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Blue));
         }
-        else if (Input.GetButtonDown(shootYellowName))
+        else if (Input.GetButton(shootYellowName))
         {
             weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Yellow));
         }

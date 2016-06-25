@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
    
     public int uniqueId = -1;
+    
 
     public ColorKey ColorKey;
          
@@ -17,6 +18,9 @@ public class Enemy : MonoBehaviour
     public int Difficulty { get { return difficulty; } }
 
     public bool IsRoot = true;
+
+    public int score;
+    public int Score { get { return score; } }
 
     void Start()
     {
