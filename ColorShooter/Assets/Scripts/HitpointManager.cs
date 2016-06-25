@@ -5,6 +5,8 @@ public class HitpointManager : MonoBehaviour
 {
     private Enemy enemy;
 
+    private Player player;
+
     [SerializeField]
     private int curLife;
     public int CurLife { get { return curLife; } }
@@ -36,6 +38,9 @@ public class HitpointManager : MonoBehaviour
         }
 
         enemy = RootObject.GetComponent<Enemy>();
+
+        if (!enemy)
+            player = RootObject.GetComponent<Player>();
     }
 
     public void Damage(int damage, ColorKey bulletColor)
@@ -69,11 +74,15 @@ public class HitpointManager : MonoBehaviour
 
         if (curLife < 0)
         {
-
-
             curLife = 0;
 
-            Destroy(RootObject);
+            if (!player)
+                Destroy(RootObject);
+
+            else
+            {
+                player.Killed();
+            }
         }
 
         else if (curLife > maxLife)
@@ -83,6 +92,11 @@ public class HitpointManager : MonoBehaviour
     }
 
 
-    
 
+
+
+    public void ResetHitpoints()
+    {
+        curLife = maxLife;
+    }
 }

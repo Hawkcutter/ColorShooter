@@ -24,7 +24,8 @@ public class Gun : Weapon
 
     void Start()
     {
-        cooldown = CooldownAtLevel[speedUpgradeCount];
+        if(IsPlayerWeapon)
+            cooldown = CooldownAtLevel[speedUpgradeCount];
     }
 
     protected override void Shoot(Vector2 startPos, Vector2 direction, ColorKey color)
@@ -32,40 +33,47 @@ public class Gun : Weapon
         if (projectilePrefab)
         {
 
-            if (numShotUpgradeCount == 0)
+            if(IsPlayerWeapon)
             {
-                MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+                if (numShotUpgradeCount == 0)
+                {
+                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+                }
+
+                else if (numShotUpgradeCount == 1)
+                {
+                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                }
+
+                else if (numShotUpgradeCount == 2)
+                {
+                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                }
+
+                else if (numShotUpgradeCount == 3)
+                {
+                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[3].transform.position, ProjectileSpawnPoint[3].transform.up, color);
+
+                    MyShoot(ProjectileSpawnPoint[4].transform.position, ProjectileSpawnPoint[4].transform.up, color);
+                }
             }
 
-            else if (numShotUpgradeCount == 1)
+            else
             {
-                MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                MyShoot(startPos, direction, color);
             }
-
-            else if (numShotUpgradeCount == 2)
-            {
-                MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
-            }
-
-            else if (numShotUpgradeCount == 3)
-            {
-                MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[3].transform.position, ProjectileSpawnPoint[3].transform.up, color);
-
-                MyShoot(ProjectileSpawnPoint[4].transform.position, ProjectileSpawnPoint[4].transform.up, color);
-            }
-
 
 
 
@@ -76,14 +84,19 @@ public class Gun : Weapon
     {
          LinearProjectile projectile = null;
 
-        if(IsPlayerWeapon)
-            projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
+         if (IsPlayerWeapon)
+         {
 
-        else
-            projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
+             projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
+             projectile.Speed = SpeedAtLevel[speedUpgradeCount];
+             projectile.Damage = DamageAtLevel[damageUpgradeCount];
+         }
 
-        projectile.Speed = SpeedAtLevel[speedUpgradeCount];
-        projectile.Damage = DamageAtLevel[damageUpgradeCount];
+
+         else
+             projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
+
+
 
 
         if (ApplyStartPos)

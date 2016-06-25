@@ -78,11 +78,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e22eabb12092c749b301e68c4d94af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mode: 1
   breakThroughDamage: 1
-  difficulty: 0
+  difficulty: 5
   shieldObject: {fileID: 0}
   IsRoot: 1
   score: 50
+  redSprite: {fileID: 21300002, guid: 08f10eff9aae2504da505ccde5e0cdef, type: 3}
+  yellowSprite: {fileID: 21300000, guid: 08f10eff9aae2504da505ccde5e0cdef, type: 3}
+  greenSprite: {fileID: 21300006, guid: 08f10eff9aae2504da505ccde5e0cdef, type: 3}
+  blueSprite: {fileID: 21300004, guid: 08f10eff9aae2504da505ccde5e0cdef, type: 3}
 --- !u!114 &11419748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +129,7 @@ MonoBehaviour:
   IsPlayerWeapon: 0
   UseCooldown: 1
   spawnPosition: {fileID: 123334}
-  cooldown: 1.5
+  cooldown: 2
   projectilePrefab: {fileID: 11441982, guid: d4eb8da544a308f4c8ab1b7d55225a69, type: 2}
   RotateProjectileToDirection: 1
   ApplyStartPos: 1
@@ -174,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 14cc733d1442cfc4d932fe5b35117a44, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!1001 &100100000

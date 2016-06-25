@@ -19,10 +19,49 @@ public class Player : MonoBehaviour {
 
     float xMin, xMax, yMin, yMax;
 
-	// Use this for initialization
-	void Start () 
+    [SerializeField]
+    private float respawnCooldown = 5.0f;
+    private float curRespawnCooldown;
+
+    [SerializeField]
+    private HitpointManager hitpointManager;
+
+    private bool isDead;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+
+    [SerializeField]
+    private Collider2D playerCollider;
+
+    public void Killed()
     {
-        
+        isDead = true;
+        rb2D.velocity = Vector2.zero;
+
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.25f);
+
+        playerCollider.enabled = false;
+    }
+
+    public void Respawned()
+    {
+
+        isDead = false;
+        curRespawnCooldown = respawnCooldown;
+
+        hitpointManager.ResetHitpoints();
+
+        spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1.0f);
+
+        playerCollider.enabled = true;
+    }
+
+	// Use this for initialization
+	void Start ()
+    {
+        curRespawnCooldown = respawnCooldown;
+
         rb2D = GetComponent<Rigidbody2D>();
         horizontalAxisName  = "Horizontal_P"    + playerID;
         verticalAxisName    = "Vertical_P"      + playerID;
@@ -38,34 +77,43 @@ public class Player : MonoBehaviour {
       
 	}
 
-    void Shoot()
-    {
-        Debug.Log(playerID);
-    }
-
     void Update()
     {
-        if (Input.GetButton(shootGreenName))
+        if (isDead)
         {
-            weapon.TryShoot(new Vector2(0,1),ColorKey.GetColorKey( ColorKey.EColorKey.Green));
+            curRespawnCooldown -= Time.deltaTime;
+
+            if (curRespawnCooldown <= 0.0f)
+            {
+                Respawned();
+            }
         }
-        else if (Input.GetButton(shootRedName))
+
+
+        else
         {
-            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Red));
-        }
-        else if (Input.GetButton(shootBlueName))
-        {
-            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Blue));
-        }
-        else if (Input.GetButton(shootYellowName))
-        {
-            weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Yellow));
+            if (Input.GetButton(shootGreenName))
+            {
+                weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Green));
+            }
+            else if (Input.GetButton(shootRedName))
+            {
+                weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Red));
+            }
+            else if (Input.GetButton(shootBlueName))
+            {
+                weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Blue));
+            }
+            else if (Input.GetButton(shootYellowName))
+            {
+                weapon.TryShoot(new Vector2(0, 1), ColorKey.GetColorKey(ColorKey.EColorKey.Yellow));
+            }
         }
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () 
-    {   
+    void FixedUpdate()
+    {
         moveHorizontal = Input.GetAxis(horizontalAxisName);
         moveVertical = -Input.GetAxis(verticalAxisName);
 
@@ -83,5 +131,6 @@ public class Player : MonoBehaviour {
             Mathf.Clamp(rb2D.position.x, xMin, xMax),
             Mathf.Clamp(rb2D.position.y, yMin, yMax)
         );
-	}
+
+    }
 }

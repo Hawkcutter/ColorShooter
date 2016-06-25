@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRoot: {fileID: 187616}
-  Damage: 0
+  Damage: 2
   Speed: 15
   spriteRenderer: {fileID: 0}
 --- !u!212 &21217232

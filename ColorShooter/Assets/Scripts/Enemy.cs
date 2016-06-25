@@ -3,8 +3,10 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour, IUnique
 {
-    
+    public enum ColorMode { ByRgbColor, BySprite }
 
+
+    public ColorMode Mode;
     public int UniqueId { get; set; }
 
     public ColorKey ColorKey { get; private set; }
@@ -25,16 +27,46 @@ public class Enemy : MonoBehaviour, IUnique
     public bool IsRoot = true;
 
     public int score;
+
+    [SerializeField]
+    private Sprite redSprite;
+    [SerializeField]
+    private Sprite yellowSprite;
+    [SerializeField]
+    private Sprite greenSprite;
+    [SerializeField]    
+    private Sprite blueSprite;
   
     void Start()
     {
         ColorKey = ColorKey.GetRandomColorKey();
 
 
+
+
         SpriteRenderer sprite = GetComponent<SpriteRenderer>();
 
-        if(sprite)
-            sprite.color = ColorKey.RgbColor;
+        if (sprite)
+        {
+            if(Mode == ColorMode.ByRgbColor)
+                sprite.color = ColorKey.RgbColor;
+
+            else if(Mode == ColorMode.BySprite)
+            {
+                if (ColorKey.Key == ColorKey.EColorKey.Red)
+                    sprite.sprite = redSprite;
+
+                if (ColorKey.Key == ColorKey.EColorKey.Blue)
+                    sprite.sprite = blueSprite;
+
+                if (ColorKey.Key == ColorKey.EColorKey.Green)
+                    sprite.sprite = greenSprite;
+
+                if (ColorKey.Key == ColorKey.EColorKey.Yellow)
+                    sprite.sprite = yellowSprite;
+            }
+        }
+         
 
         if (IsRoot)
         {

@@ -7,6 +7,8 @@ public class PlayerBase : MonoBehaviour
     private int lifes;
     public int Lifes { get { return lifes; } }
 
+    public bool Indestructible = false;
+
     public void SetLifes(int amount)
     {
         this.lifes = amount;
@@ -18,7 +20,8 @@ public class PlayerBase : MonoBehaviour
 
         if (enemy)
         {
-            lifes -= enemy.BreakThroughDamage;
+            if(!Indestructible)
+                lifes -= enemy.BreakThroughDamage;
 
             if (lifes <= 0)
             {

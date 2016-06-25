@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 
     public UserInterface ui;
     
-
-
     [SerializeField]
     private int playerBaseLifes = 10;
 
@@ -19,23 +17,29 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private SpawnZone[] spawnZones;
 
-    private int detroyedEnemies;
     private float gameTime;
 
-    private float curDifficulty;
-    public float CurrentGameDifficulty { get { return curDifficulty; } }
+    public bool SpawnEnemies = true;
 
-    private int highscore;
-    public int Highscore { get { return highscore; } }
-
+    [Header("Score and Difficulty")]
     [SerializeField]
-    private Enemy[] enemyPrefabs;
-    private List<List<Enemy>> difficultySortedEnemyPrefabs;
+    private float gameTimeToMaxDifficulty = 300.0f;
+    [ReadOnly]
+    [SerializeField]
+    private float curDifficultyPercent;
+    [ReadOnly]
+    [SerializeField]
+    private int curDifficulty;
+    [ReadOnly]
+    [SerializeField]
+    private int maxEnemyDifficulty;
+    private float timeToNextScoreIncrease = 5.0f;
+    private int highscore;
+    public int Highscore { get { return highscore; } set { SetHighscore(value); } }
 
     [SerializeField]
     private float maxSpawnCooldown = 1.0f;
     private float curSpawnCooldown;
-
 
     [Header("LayerNames")]
     [SerializeField]
@@ -46,11 +50,7 @@ public class GameManager : MonoBehaviour
     private string playerLayerName;
     private int playerLayer;
 
-    private UniqueList<Enemy> enemies;
-    private UniqueList<Projectile> projectiles;
-
-    public bool SpawnEnemies;
-
+    [Header("Prefabs")]
     [SerializeField]
     private LinearProjectile redBulletPrefab;
     [SerializeField]
@@ -59,6 +59,16 @@ public class GameManager : MonoBehaviour
     private LinearProjectile blueBulletPrefab;
     [SerializeField]
     private LinearProjectile yellowBulletPrefab;
+
+    [SerializeField]
+    private Enemy[] enemyPrefabs;
+    private List<List<Enemy>> difficultySortedEnemyPrefabs;
+
+    private UniqueList<Enemy> enemies;
+    private UniqueList<Projectile> projectiles;
+
+    [SerializeField]
+    private int difficultyPower = 5;
 
     void Awake()
     {
@@ -89,9 +99,9 @@ public class GameManager : MonoBehaviour
 
     public void Reset()
     {
-        detroyedEnemies = 0;
+        curDifficulty = 0;
         gameTime = 0.0f;
-        curDifficulty = 0.0f;
+        curDifficultyPercent = 0.0f;
         curSpawnCooldown = 0.0f;
         
 
@@ -109,11 +119,16 @@ public class GameManager : MonoBehaviour
         }
 
         playerBase.SetLifes(playerBaseLifes);
-        highscore = 0;
 
-        if(ui)
-            ui.UpdateScore(highscore);
+        Highscore = 0;
+    }
 
+    private void SetHighscore(int value)
+    {
+        this.highscore = value;
+
+        if (ui)
+            ui.UpdateScore(this.highscore);
     }
 
     void CreatePrefabList()
@@ -121,44 +136,106 @@ public class GameManager : MonoBehaviour
         difficultySortedEnemyPrefabs = new List<List<Enemy>>();
         int maxDifficulty = -1;
 
+        maxEnemyDifficulty = int.MinValue;
+
         for (int i = 0; i < enemyPrefabs.Length; i++)
         {
             if (enemyPrefabs[i].Difficulty > maxDifficulty)
                 maxDifficulty = enemyPrefabs[i].Difficulty;
+
+            if (enemyPrefabs[i].Difficulty > maxEnemyDifficulty)
+                maxEnemyDifficulty = enemyPrefabs[i].Difficulty;
         }
 
         maxDifficulty += 1;
 
-        for (int i = 0; i <= maxDifficulty; i++)
+        for (int i = 0; i < maxDifficulty; i++)
             difficultySortedEnemyPrefabs.Add(new List<Enemy>());
 
         for (int i = 0; i < enemyPrefabs.Length; i++)
             difficultySortedEnemyPrefabs[enemyPrefabs[i].Difficulty].Add(enemyPrefabs[i]);
+
+
+        //fill empty difficulties with earlier ones that are not empty:
+        for (int i = 0; i < difficultySortedEnemyPrefabs.Count; i++)
+        {
+            if (difficultySortedEnemyPrefabs[i].Count == 0)
+            {
+                for (int j = i; j >= 0; j--)
+                {
+                    if (difficultySortedEnemyPrefabs[j].Count != 0)
+                    {
+                        difficultySortedEnemyPrefabs[i] = difficultySortedEnemyPrefabs[j];
+                        break;
+                    }
+                }
+            }
+        }
     }
 
-    Enemy GetEnemyPrefabOfDifficulty(int difficulty)
+
+
+    Enemy GetEnemyPrefab(int difficulty)
     {
-        if(difficulty < 0 || difficulty > difficultySortedEnemyPrefabs.Count)
-        {
-            Debug.Log("tried to fetch an enemy of difficulty that is not avaible! Difficulty: " + difficulty);
-            return null;
-        }
+        difficulty = Mathf.Clamp(difficulty, 0, difficultySortedEnemyPrefabs.Count - 1);
 
-        else
-        {
-            int numOfAvaibleEnemies = difficultySortedEnemyPrefabs[difficulty].Count;
-            int randValue = (int)(Random.value * numOfAvaibleEnemies);
+        int randEnemy = Random.Range(0, difficultySortedEnemyPrefabs[difficulty].Count);
 
-            return difficultySortedEnemyPrefabs[difficulty][randValue];
-        }
+        return difficultySortedEnemyPrefabs[difficulty][randEnemy];
     }
 
+    private float GetDifficultyDistribution(int monsterDifficulty)
+    {
+        float monsterDiff = ((float)monsterDifficulty / maxEnemyDifficulty);
 
-    void SpawnEnemy(int difficulty)
+        float val = Mathf.Abs(1.0f / (1 + Mathf.Abs(monsterDiff - curDifficultyPercent)));
+
+        for (int i = 0; i < difficultyPower; i++)
+            val *= val;
+
+        return val;
+    }
+    
+    void SpawnEnemy()
     {
         if (SpawnEnemies)
         {
-            Enemy prefab = GetEnemyPrefabOfDifficulty(difficulty);
+            float[] accumulatesChances = new float[difficultySortedEnemyPrefabs.Count];
+            float sum = 0.0f;
+
+            for (int i = 0; i < difficultySortedEnemyPrefabs.Count; i++)
+            {
+                int previous = i - 1;
+
+                if(previous < 0)
+                    previous = 0;
+
+                float curVal = GetDifficultyDistribution(i);
+                accumulatesChances[i] = curVal + accumulatesChances[previous];
+                sum += curVal;
+            }
+
+            float randVal = Random.value;
+
+            int pickId = -1;
+
+            for (int i = 0; i < accumulatesChances.Length; i++)
+            {
+
+                float curChance = accumulatesChances[i] / sum;
+                //blub += (curChance).ToString() + ", ";
+
+
+                if (randVal <= curChance)
+                {
+                    pickId = i;
+                    break;
+                    
+                }
+                 
+            }
+
+            Enemy prefab = GetEnemyPrefab(pickId);
 
             GameObject createdEnemy = Instantiate(prefab.gameObject);
 
@@ -174,12 +251,27 @@ public class GameManager : MonoBehaviour
     {
         gameTime += Time.deltaTime;
 
+        curDifficultyPercent = gameTime / gameTimeToMaxDifficulty;
+        curDifficultyPercent = Mathf.SmoothStep(0.0f, 1.0f, curDifficultyPercent);
+
+        curDifficulty = (int)(curDifficultyPercent * maxEnemyDifficulty);
+
+        curDifficulty = Mathf.Min(curDifficulty, maxEnemyDifficulty);
+
+        timeToNextScoreIncrease -= Time.deltaTime;
+
+        if(timeToNextScoreIncrease <= 0)
+        {
+            Highscore++;
+            timeToNextScoreIncrease = 5.0f;
+        }
+
         curSpawnCooldown -= Time.deltaTime;
 
         if(curSpawnCooldown <= 0.0f)
         {
             curSpawnCooldown = maxSpawnCooldown;
-            SpawnEnemy(0);
+            SpawnEnemy();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -210,23 +302,16 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            HitpointManager manager = enemy.GetComponent<HitpointManager>();         
-            if(manager.CurLife <= 0)
+            Highscore += enemy.score;
+
+            if (ui)
             {
-                highscore += enemy.score;
-
-                if(ui)
-                    ui.UpdateScore(highscore);
+                 ui.UpdateLifes(playerBase.Lifes);
             }
-
-            if(ui)
-                ui.UpdateLifes(playerBase.Lifes);
-
-            detroyedEnemies++;
-            
+              
             enemies.Remove(enemy);
         }
-        
+
     }
 
     public void RegisterProjectile(Projectile projectile)
