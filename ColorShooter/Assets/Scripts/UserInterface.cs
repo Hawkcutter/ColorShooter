@@ -24,8 +24,5 @@ public class UserInterface : MonoBehaviour {
     {
         if (scoreText != null)
             scoreText.text = "Score: " + score;
-
-        if (score == 0)
-
     }
 }
