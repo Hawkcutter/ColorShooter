@@ -30,12 +30,6 @@ public abstract class Projectile : MonoBehaviour, IUnique
         GameManager.Instance.UnregisterProjectile(this);
     }
 
-    public void Init(Vector2 startPos, Vector2 direction, float speed, ColorKey colorKey, bool isPlayerBullet)
-    {
-        
-        Init(startPos, direction, colorKey, isPlayerBullet);
-    }
-
     public void Init(Vector2 startPos, Vector2 direction, ColorKey colorKey, bool isPlayerBullet)
     {
         if (!projectileRoot)

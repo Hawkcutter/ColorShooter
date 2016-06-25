@@ -11,7 +11,6 @@ public class LinearProjectile : Projectile
     private Vector2 direction;
     public SpriteRenderer spriteRenderer;
 
-
     protected override void OnShotFired(Vector2 startPos, Vector2 direction)
     {
         this.lifetime = 5.0f;

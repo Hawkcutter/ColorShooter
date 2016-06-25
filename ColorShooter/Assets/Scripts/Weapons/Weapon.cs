@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour
 
     private float curCooldown;
     [SerializeField]
-    private float cooldown;
+    protected float cooldown;
 
     public bool IsReady { get { return curCooldown <= 0.0f; } }
 
