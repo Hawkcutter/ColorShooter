@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public UserInterface ui;
+    
+
+
     [SerializeField]
     private int playerBaseLifes = 10;
 
@@ -20,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     private float curDifficulty;
     public float CurrentGameDifficulty { get { return curDifficulty; } }
+
+    private int highscore;
+    public int Highscore { get { return highscore; } }
 
     [SerializeField]
     private Enemy[] enemyPrefabs;
@@ -64,6 +71,7 @@ public class GameManager : MonoBehaviour
 
         enemies = new UniqueList<Enemy>(10);
         projectiles = new UniqueList<Projectile>(50);
+        ui.UpdateLifes(playerBase.Lifes);
 
       
     }
@@ -74,6 +82,7 @@ public class GameManager : MonoBehaviour
         gameTime = 0.0f;
         curDifficulty = 0.0f;
         curSpawnCooldown = 0.0f;
+        
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -89,6 +98,9 @@ public class GameManager : MonoBehaviour
         }
 
         playerBase.SetLifes(playerBaseLifes);
+        highscore = 0;
+        ui.UpdateScore(highscore);
+
     }
 
     void CreatePrefabList()
@@ -163,13 +175,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnEnemyDestroyed(Enemy enemy)
-    {
-        if(enemy != null)
-        {
-            detroyedEnemies++;
-        }
-    }
+
 
     public int GetEnemyLayer()
     {
@@ -189,7 +195,21 @@ public class GameManager : MonoBehaviour
 
     public void UnregisterEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
+        if (enemy != null)
+        {
+            HitpointManager manager = enemy.GetComponent<HitpointManager>();         
+            if(manager.CurLife <= 0)
+            {
+                highscore += enemy.score;
+                ui.UpdateScore(highscore);
+            }
+            ui.UpdateLifes(playerBase.Lifes);
+
+            detroyedEnemies++;
+            
+            enemies.Remove(enemy);
+        }
+        
     }
 
     public void RegisterProjectile(Projectile projectile)

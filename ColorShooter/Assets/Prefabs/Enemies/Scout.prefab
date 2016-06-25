@@ -102,9 +102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e22eabb12092c749b301e68c4d94af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueId: -1
   breakThroughDamage: 1
   difficulty: 0
+  shieldObject: {fileID: 0}
+  IsRoot: 1
+  score: 10
 --- !u!212 &21282234
 SpriteRenderer:
   m_ObjectHideFlags: 1

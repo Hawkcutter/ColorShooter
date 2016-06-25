@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour, IUnique
 {
+    
 
     public int UniqueId { get; set; }
 
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour, IUnique
 
     public bool IsRoot = true;
 
+    public int score;
+  
     void Start()
     {
         ColorKey = ColorKey.GetRandomColorKey();

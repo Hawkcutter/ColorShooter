@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakThroughDamage: 1
   difficulty: 1
+  shieldObject: {fileID: 0}
+  IsRoot: 1
+  score: 0
 --- !u!114 &11495384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +122,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 11441982, guid: ea6c7368ecc8e544fa7ac46529eeae39, type: 2}
   RotateProjectileToDirection: 1
   ApplyStartPos: 1
+  damageUpgradeCount: 0
+  speedUpgradeCount: 0
+  numShotUpgradeCount: 0
+  DamageAtLevel: 
+  CooldownAtLevel: []
+  SpeedAtLevel: []
+  ProjectileSpawnPoint: []
 --- !u!212 &21282234
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,6 +5,7 @@ public class PlayerBase : MonoBehaviour
 {
     [SerializeField]
     private int lifes;
+    public int Lifes { get { return lifes; } }
 
     public void SetLifes(int amount)
     {

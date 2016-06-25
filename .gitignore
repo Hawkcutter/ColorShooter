@@ -30,3 +30,7 @@ sysinfo.txt
 *.unitypackage
 /ColorShooter/Library
 /ColorShooter/Temp
+/ColorShooter/obj/Debug/Assembly-CSharp.csproj.FileListAbsolute.txt
+/ColorShooter/obj/Debug/Assembly-CSharp.csprojResolveAssemblyReference.cache
+/ColorShooter/obj/Debug/Assembly-CSharp.dll
+/ColorShooter/obj/Debug/Assembly-CSharp.pdb
