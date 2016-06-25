@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakThroughDamage: 1
-  difficulty: 20
+  difficulty: 0
   shieldObject: {fileID: 0}
   IsRoot: 1
   score: 10

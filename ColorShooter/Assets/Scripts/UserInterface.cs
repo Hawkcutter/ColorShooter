@@ -21,8 +21,11 @@ public class UserInterface : MonoBehaviour {
 	}
 
     public void UpdateScore(int score)
-    {   
-        if(scoreText != null)
+    {
+        if (scoreText != null)
             scoreText.text = "Score: " + score;
+
+        if (score == 0)
+
     }
 }

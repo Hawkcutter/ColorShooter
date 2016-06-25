@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         gameTime = 0.0f;
         curDifficulty = 0.0f;
         curSpawnCooldown = 0.0f;
-        highscore = 0;
+        
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -97,6 +97,9 @@ public class GameManager : MonoBehaviour
         }
 
         playerBase.SetLifes(playerBaseLifes);
+        highscore = 0;
+        ui.UpdateScore(highscore);
+
     }
 
     void CreatePrefabList()
@@ -193,9 +196,16 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
+            HitpointManager manager = enemy.GetComponent<HitpointManager>();
+           
+            if(manager.CurLife <= 0)
+            {
+                highscore += enemy.score;
+                ui.UpdateScore(highscore);
+            }
+
             detroyedEnemies++;
-            highscore += enemy.score;
-            ui.UpdateScore(highscore);
+            
             enemies.Remove(enemy);
         }
         

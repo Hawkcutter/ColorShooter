@@ -128,9 +128,13 @@ MonoBehaviour:
   projectilePrefab: {fileID: 11441982, guid: d4eb8da544a308f4c8ab1b7d55225a69, type: 2}
   RotateProjectileToDirection: 1
   ApplyStartPos: 1
-  DamageUpgradeCount: 0
-  SpeedUpgradeCount: 0
-  ShotUpgradeCount: 0
+  damageUpgradeCount: 0
+  speedUpgradeCount: 0
+  numShotUpgradeCount: 0
+  DamageAtLevel: 
+  CooldownAtLevel: []
+  SpeedAtLevel: []
+  ProjectileSpawnPoint: []
 --- !u!114 &11472050
 MonoBehaviour:
   m_ObjectHideFlags: 1

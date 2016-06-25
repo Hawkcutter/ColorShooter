@@ -69,7 +69,10 @@ public class HitpointManager : MonoBehaviour
 
         if (curLife < 0)
         {
+
+
             curLife = 0;
+
             Destroy(RootObject);
         }
 
