@@ -96,7 +96,7 @@ public class Level : MonoBehaviour
 
                 int numSpawns = UnityEngine.Random.Range(min, max);
 
-                float numPlayerDifficultyIncrease = 1.0f  + (float)(GameManager.Instance.RegisteredPlayers - 1) * 0.5f;
+                float numPlayerDifficultyIncrease = 1.0f  + (float)(GameManager.Instance.RegisteredPlayers - 1) * 0.33f;
              
                 numPlayerDifficultyIncrease = Mathf.Max(numPlayerDifficultyIncrease, 1.0f);
 

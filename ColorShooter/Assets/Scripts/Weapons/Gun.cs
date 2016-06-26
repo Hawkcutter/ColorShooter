@@ -208,7 +208,7 @@ public class Gun : Weapon
             }
         }
 
-        int rand = UnityEngine.Random.Range(0, avaibleUpgradeIds.Count);
+        int rand = avaibleUpgradeIds[UnityEngine.Random.Range(0, avaibleUpgradeIds.Count)];
 
         if (rand == (int)GunUpgradeType.NumShots)
         {
