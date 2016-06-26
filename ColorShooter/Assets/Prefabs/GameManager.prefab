@@ -215,8 +215,9 @@ MonoBehaviour:
   yellowBulletPrefab: {fileID: 11405794, guid: 398cff814ea90e84b8fdca83f24875a2, type: 2}
   upgradePrefab: {fileID: 158250, guid: 3f69961cef412444983daa100087463e, type: 2}
   level:
-  - {fileID: 11485744}
+  - {fileID: 11466836}
   - {fileID: 11497126}
+  - {fileID: 11485744}
 --- !u!114 &11466836
 MonoBehaviour:
   m_ObjectHideFlags: 1
