@@ -26,25 +26,25 @@ public class UserInterface : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
-        if (player1)
+        if (player1.gameObject.activeSelf)
             playerUI_1.gameObject.SetActive(true);
         else
             playerUI_1.gameObject.SetActive(false);
 
-        if (player2)
+        if (player2.gameObject.activeSelf)
             playerUI_2.gameObject.SetActive(true);
         else
             playerUI_2.gameObject.SetActive(false);
 
-        if (player1)
-            playerUI_2.gameObject.SetActive(true);
+        if (player3.gameObject.activeSelf)
+            playerUI_3.gameObject.SetActive(true);
         else
-            playerUI_2.gameObject.SetActive(false);
+            playerUI_3.gameObject.SetActive(false);
 
-        if (player1)
-            playerUI_2.gameObject.SetActive(true);
+        if (player4.gameObject.activeSelf)
+            playerUI_4.gameObject.SetActive(true);
         else
-            playerUI_2.gameObject.SetActive(false);
+            playerUI_4.gameObject.SetActive(false);
 
 	}
 
