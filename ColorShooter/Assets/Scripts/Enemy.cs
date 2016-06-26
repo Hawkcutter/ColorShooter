@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour, IUnique
     [SerializeField]
     private int baseDmg;
     public int BaseDmg { get { return baseDmg; } }
-    [SerializeField]
-    private int difficulty;
-    public int Difficulty { get { return difficulty; } }
+    //[SerializeField]
+    //private int difficulty;
+    //public int Difficulty { get { return difficulty; } }
     [SerializeField]
     private int score;
     public int Score { get { return score; } }
@@ -22,12 +22,13 @@ public class Enemy : MonoBehaviour, IUnique
     private Enemy shieldObject;
     public Enemy ShieldObject { get { return shieldObject; } }
     [SerializeField]
-    private float verticalSpeed;
-    public float VerticalSpeed { get { return verticalSpeed; } }
+    private float speed;
+    public float Speed { get { return speed; } }
     [SerializeField]
     private int touchDamage;
     public int TouchDamage { get { return touchDamage; } }
 
+    public bool RandomizeColor = true;
 
     [Header("Other")]
     public ColorMode MyColorMode;
@@ -53,7 +54,7 @@ public class Enemy : MonoBehaviour, IUnique
     {
         hitpoints = (int)(hitpoints * strengthFactor);
         score = (int)(score * strengthFactor);
-        verticalSpeed *= strengthFactor;
+        speed *= strengthFactor;
 
         if (shieldObject)
             shieldObject.Init(strengthFactor);
@@ -63,11 +64,17 @@ public class Enemy : MonoBehaviour, IUnique
     {
         sprite = GetComponent<SpriteRenderer>();
 
-        ColorKey = ColorKey.GetRandomColorKey();
+        if (RandomizeColor)
+            ColorKey = ColorKey.GetRandomColorKey();
 
         if (IsRoot)
         {
             GameManager.Instance.RegisterEnemy(this);
+        }
+
+        if (ColorKey == null)
+        {
+            ColorKey = ColorKey.GetColorKey(ColorKey.EColorKey.White);
         }
 
     }
@@ -90,6 +97,11 @@ public class Enemy : MonoBehaviour, IUnique
     void SetColor(ColorKey color)
     {
         this.colorKey = color;
+
+        if (ColorKey.Key == ColorKey.EColorKey.White)
+        {
+            return;
+        }
 
         if (sprite)
         {

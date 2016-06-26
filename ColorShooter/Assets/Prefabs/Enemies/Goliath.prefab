@@ -266,11 +266,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 50
   baseDmg: 0
-  difficulty: 0
   score: 0
   shieldObject: {fileID: 0}
-  verticalSpeed: 0
+  speed: 0
   touchDamage: 0
+  RandomizeColor: 1
   MyColorMode: 0
   IsRoot: 0
   redSprite: {fileID: 0}
@@ -290,11 +290,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 75
   baseDmg: 0
-  difficulty: 0
   score: 0
   shieldObject: {fileID: 11415154}
-  verticalSpeed: 0
+  speed: 0
   touchDamage: 0
+  RandomizeColor: 1
   MyColorMode: 0
   IsRoot: 0
   redSprite: {fileID: 0}
@@ -314,11 +314,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 200
   baseDmg: 20
-  difficulty: 10
   score: 100
   shieldObject: {fileID: 11431104}
-  verticalSpeed: 0.25
+  speed: 0.25
   touchDamage: 10
+  RandomizeColor: 1
   MyColorMode: 1
   IsRoot: 1
   redSprite: {fileID: 21300022, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}

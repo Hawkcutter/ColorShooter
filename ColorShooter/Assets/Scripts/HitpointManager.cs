@@ -64,7 +64,7 @@ public class HitpointManager : MonoBehaviour
                 if (enemy.ShieldObject != null)
                     return;
 
-                else if (bulletColor == enemy.ColorKey)
+                else if (bulletColor == enemy.ColorKey || enemy.ColorKey.Key == ColorKey.EColorKey.White)
                     ChangeHealth(-damage);         
             }
 
