@@ -15,7 +15,6 @@ GameObject:
   - 50: {fileID: 5048916}
   - 58: {fileID: 5819378}
   - 114: {fileID: 11447002}
-  - 114: {fileID: 11474300}
   m_Layer: 8
   m_Name: Bug
   m_TagString: Untagged
@@ -108,29 +107,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 10
   baseDmg: 5
-  difficulty: 1
   score: 10
   shieldObject: {fileID: 0}
-  verticalSpeed: 2
+  speed: 1.6
   touchDamage: 2
+  RandomizeColor: 1
   MyColorMode: 1
   IsRoot: 1
   redSprite: {fileID: 21300020, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}
   yellowSprite: {fileID: 21300044, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}
   greenSprite: {fileID: 21300008, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}
   blueSprite: {fileID: 21300032, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}
---- !u!114 &11474300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 178282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add07c084813e534fa745260360ed83f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BugPrefab: {fileID: 178282}
 --- !u!114 &11481834
 MonoBehaviour:
   m_ObjectHideFlags: 1

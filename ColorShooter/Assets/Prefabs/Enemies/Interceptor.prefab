@@ -81,11 +81,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 20
   baseDmg: 5
-  difficulty: 4
   score: 50
   shieldObject: {fileID: 0}
-  verticalSpeed: 2
+  speed: 0.5
   touchDamage: 2
+  RandomizeColor: 1
   MyColorMode: 1
   IsRoot: 1
   redSprite: {fileID: 21300012, guid: 1bba31c6cd372254a85b2fa586923193, type: 3}
@@ -152,6 +152,7 @@ MonoBehaviour:
   damageUpgradeCount: 0
   speedUpgradeCount: 0
   numShotUpgradeCount: 0
+  perShotDmgReduce: 0
   DamageAtLevel: 
   CooldownAtLevel: []
   SpeedAtLevel: []

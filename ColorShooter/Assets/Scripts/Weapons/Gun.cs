@@ -19,6 +19,9 @@ public class Gun : Weapon
 
     private int numProjectiles = 1;
 
+    [SerializeField]
+    private float perShotDmgReduce;
+
     public int[] DamageAtLevel;
     public float[] CooldownAtLevel;
     public float[] SpeedAtLevel;
@@ -107,10 +110,12 @@ public class Gun : Weapon
              projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
              projectile.Speed = SpeedAtLevel[speedUpgradeCount];
 
-             int finalDamage = (int) Mathf.Ceil((float)DamageAtLevel[damageUpgradeCount] / (numShotUpgradeCount + 1));
 
-             Debug.Log(finalDamage);
-             projectile.Damage = finalDamage;
+             int oneShotDmg = Mathf.Max((int)(DamageAtLevel[damageUpgradeCount] * perShotDmgReduce * (numProjectiles - 1)), DamageAtLevel[damageUpgradeCount]);
+
+             int perShotDmg = (int)Mathf.Ceil((float)oneShotDmg / numProjectiles);
+
+             projectile.Damage = perShotDmg;
          }
 
 

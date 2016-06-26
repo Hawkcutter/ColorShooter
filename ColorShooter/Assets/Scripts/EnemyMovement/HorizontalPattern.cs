@@ -23,7 +23,7 @@ public class HorizontalPattern : MonoBehaviour
         Enemy enemy = GetComponent<Enemy>();
 
         if (enemy)
-            this.speed = enemy.VerticalSpeed;
+            this.speed = enemy.Speed;
     }
 	
 	// Update is called once per frame

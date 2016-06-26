@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &103678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 468228}
+  - 114: {fileID: 11423390}
+  m_Layer: 0
+  m_Name: Difficulty4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &110752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 418074}
+  - 114: {fileID: 11412538}
+  m_Layer: 0
+  m_Name: Difficulty1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &117718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 460744}
+  - 114: {fileID: 11485744}
+  m_Layer: 0
+  m_Name: Difficulty0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &129424
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +63,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!1 &154634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 412260}
+  - 114: {fileID: 11432492}
+  m_Layer: 0
+  m_Name: Difficulty2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &159666
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,6 +93,22 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!1 &181648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 493704}
+  - 114: {fileID: 11498900}
+  m_Layer: 0
+  m_Name: Difficulty3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &199910
 GameObject:
@@ -59,6 +139,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 492352}
   m_RootOrder: 0
+--- !u!4 &412260
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 492352}
+  m_RootOrder: 4
+--- !u!4 &418074
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110752}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 492352}
+  m_RootOrder: 3
 --- !u!4 &442082
 Transform:
   m_ObjectHideFlags: 1
@@ -72,6 +178,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 492352}
   m_RootOrder: 1
+--- !u!4 &460744
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 492352}
+  m_RootOrder: 2
+--- !u!4 &468228
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 492352}
+  m_RootOrder: 6
 --- !u!4 &492352
 Transform:
   m_ObjectHideFlags: 1
@@ -85,8 +217,98 @@ Transform:
   m_Children:
   - {fileID: 409188}
   - {fileID: 442082}
+  - {fileID: 460744}
+  - {fileID: 418074}
+  - {fileID: 412260}
+  - {fileID: 493704}
+  - {fileID: 468228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &493704
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181648}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 492352}
+  m_RootOrder: 5
+--- !u!114 &11412538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+--- !u!114 &11423390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+--- !u!114 &11432492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
 --- !u!114 &11454796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +357,60 @@ MonoBehaviour:
   - {fileID: 11410478, guid: bacc536f725f4954ca5bfb2620de12f6, type: 2}
   - {fileID: 11462420, guid: 9c82f54584c32d947b9daf7c0b768235, type: 2}
   - {fileID: 11461088, guid: b596cefaa87fac2409d615e95372c642, type: 2}
+  difficulyClasses:
+  - {fileID: 11485744}
+  - {fileID: 11412538}
+  - {fileID: 11432492}
+  - {fileID: 11498900}
+  - {fileID: 11423390}
+--- !u!114 &11485744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+--- !u!114 &11498900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounters:
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
+  - enemy: {fileID: 0}
+    weight: 0
+    ignore: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
