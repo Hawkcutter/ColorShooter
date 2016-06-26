@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Debug")]
     public bool SpawnEnemies = true;
+    public int noOfPlayers;
 
     [ReadOnly]
     [SerializeField]
@@ -107,7 +108,9 @@ public class GameManager : MonoBehaviour
     private UniqueList<Enemy> enemies;
     private UniqueList<Projectile> projectiles;
 
+
     private List<Player> players;
+    
 
     void Awake()
     {
@@ -401,7 +404,9 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            Highscore += enemy.Score;
+            HitpointManager manager = enemy.GetComponent<HitpointManager>();
+            if(manager.CurLife <=0)
+                Highscore += enemy.Score;
 
             if (ui)
             {

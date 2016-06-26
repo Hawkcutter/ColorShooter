@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
     public float speed;
     public int playerID;
+    public int controllerID;
     float moveHorizontal;
     float moveVertical;
     Rigidbody2D rb2D;
@@ -78,6 +79,21 @@ public class Player : MonoBehaviour {
         curBoostCooldown = 0.0f;
 
         GameManager.Instance.RegisterPlayer(this);
+    }
+
+    public void register(int ID)
+    {
+        controllerID = ID;
+
+        horizontalAxisName = "Horizontal_P" + ID;
+        verticalAxisName = "Vertical_P" + ID;
+        shootGreenName = "FireGreen_P" + ID;
+        shootRedName = "FireRed_P" + ID;
+        shootBlueName = "FireBlue_P" + ID;
+        shootYellowName = "FireYellow_P" + ID;
+
+        boostLeftName = "BoostLeft_P" + ID;
+        boostRightName = "BoostRight_P" + ID;
     }
 
     public void Killed()

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitpoints: 10
   baseDmg: 5
-  difficulty: 1
+  difficulty: 0
   score: 10
   shieldObject: {fileID: 0}
   verticalSpeed: 2

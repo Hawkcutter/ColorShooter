@@ -109,7 +109,7 @@ public class Gun : Weapon
 
              int finalDamage = (int) Mathf.Ceil((float)DamageAtLevel[damageUpgradeCount] / (numShotUpgradeCount + 1));
 
-             Debug.Log(finalDamage);
+
              projectile.Damage = finalDamage;
          }
 
