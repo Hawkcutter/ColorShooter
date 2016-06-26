@@ -12,6 +12,8 @@ public class Encounter
     public float multiplier = 1.0f;
     public int minSpawns = 1;
     public int maxSpawns = 1;
+    public int numMinSpawnsPerLoop = 0;
+    public int numMaxSpawnsPerLoop = 0;
 
     public float Chance { get; set;}
     public float AccumulatedChance { get; set; }
@@ -39,6 +41,8 @@ public class Level : MonoBehaviour
 
     [SerializeField]
     public List<Encounter> encounters;
+
+    private int loop;
 
     public bool CanSpawnEnemy   { get { return curSpawnCooldown <= 0.0f; } }
     public bool LevelFinished   { get { return curLvlDuration >= lvlDuration; } }
@@ -68,6 +72,7 @@ public class Level : MonoBehaviour
 
     public void StartLevel(int loop)
     {
+        this.loop = loop;
         curLvlDuration = 0.0f;
         curSpawnCooldown = 0.0f;
 
@@ -85,7 +90,11 @@ public class Level : MonoBehaviour
                 Encounter newEncounter = GetRandomEncounter();
                 curSpawnCooldown = newEncounter.spawnCooldown;
 
-                int numSpawns = UnityEngine.Random.Range(newEncounter.minSpawns, newEncounter.maxSpawns);
+
+                int min = newEncounter.minSpawns + newEncounter.numMinSpawnsPerLoop * loop;
+                int max = newEncounter.maxSpawns + newEncounter.numMaxSpawnsPerLoop * loop;
+
+                int numSpawns = UnityEngine.Random.Range(min, max);
 
                 for (int i = 0; i < numSpawns; i++)
                 {

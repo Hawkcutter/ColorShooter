@@ -210,7 +210,7 @@ MonoBehaviour:
   baseDmg: 5
   score: 15
   shieldObject: {fileID: 11468648}
-  speed: 0.4
+  speed: 3
   touchDamage: 2
   RandomizeColor: 1
   MyColorMode: 1

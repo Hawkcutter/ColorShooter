@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -35,12 +36,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private SpawnZone[] spawnZones;
-    
 
 
     [Header("Debug")]
     public bool SpawnEnemies = true;
     public int noOfPlayers;
+    public int debugLevelId = -1;
 
     [ReadOnly]
     [SerializeField]
@@ -97,6 +98,9 @@ public class GameManager : MonoBehaviour
     private LinearProjectile yellowBulletPrefab;
 
     [SerializeField]
+    private ParticleSystem deathParticlesPrefab;
+
+    [SerializeField]
     private GameObject upgradePrefab;
 
     private UniqueList<Enemy> enemies;
@@ -136,8 +140,8 @@ public class GameManager : MonoBehaviour
         allPlayers = new List<Player>();
         takenControllers = new List<int>();
 
-        if(ui)
-            ui.UpdateLifes(playerBase.Lifes);
+        //if(ui)
+            //ui.UpdateLifes(playerBase.Lifes);
 
     }
 
@@ -243,8 +247,6 @@ public class GameManager : MonoBehaviour
         upgrChance = 0;
         roundTime = 0.0f;
 
-        playerBase.SetLifes(this.playerBaseLifes);
-
         for (int i = 0; i < enemies.Count; i++)
         {
             if (enemies.Get(i) != null)
@@ -320,8 +322,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(!IsBetweenLevels)
-            level[curLevelId].UpdateLevel(Time.deltaTime);
+        if (!IsBetweenLevels)
+        {
+
+            int useId = curLevelId;
+
+            if (debugLevelId != -1)
+                useId = debugLevelId;
+
+            level[useId].UpdateLevel(Time.deltaTime);
+        }
+
 
         else
         {
@@ -374,13 +385,18 @@ public class GameManager : MonoBehaviour
         if (enemy != null)
         {
             HitpointManager manager = enemy.GetComponent<HitpointManager>();
-            if(manager.CurLife <=0)
+            if (manager.CurLife <= 0)
+            {
+
                 Highscore += enemy.Score;
 
-            if (ui)
-            {
-                 ui.UpdateLifes(playerBase.Lifes);
+                GameObject deathParticlesInstance = Instantiate(deathParticlesPrefab.gameObject);
+                deathParticlesInstance.transform.position = enemy.gameObject.transform.position;
+               
             }
+
+
+            OnBaseLifeChanged();
               
             enemies.Remove(enemy);
         }
@@ -397,6 +413,13 @@ public class GameManager : MonoBehaviour
         projectiles.Remove(projectile);
     }
 
+    public void OnBaseLifeChanged()
+    {
+        if (ui)
+        {
+            ui.UpdateLifes(playerBase.Lifes);
+        }
+    }
 
 
 }

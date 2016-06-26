@@ -7,6 +7,13 @@ public class ConstantShooting : EnemyAttack
     private Weapon weapon;
 
 
+
+    void Start()
+    {
+        weapon.RandomizeCooldown();
+    }
+
+
 	void Update () 
     {
         weapon.TryShoot(new Vector2(0.0f, -1.0f), enemy.ColorKey);

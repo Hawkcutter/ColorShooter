@@ -26,9 +26,11 @@ public class Player : MonoBehaviour {
 
     float xMin, xMax, yMin, yMax;
 
-    [SerializeField]
-    private float respawnCooldown = 5.0f;
+    private float respawnCooldown = 2.0f;
     private float curRespawnCooldown;
+    private float blinkCooldown = 0.075f;
+    private float curBlinkCooldown;
+    private bool blinkNormalColor;
 
     [SerializeField]
     private HitpointManager hitpointManager;
@@ -109,12 +111,34 @@ public class Player : MonoBehaviour {
         this.controllerRegistered = true;
     }
 
+    private void Blink()
+    {
+        curBlinkCooldown -= Time.deltaTime;
+
+        if (curBlinkCooldown < 0.0f)
+        {
+            curBlinkCooldown = blinkCooldown;
+
+            if (blinkNormalColor)
+            {
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1.0f);
+            }
+
+            else
+            {
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.25f);
+            }
+            blinkNormalColor = !blinkNormalColor;
+        }
+    }
+
     public void Killed()
     {
         isDead = true;
         rb2D.velocity = Vector2.zero;
 
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.25f);
+        blinkNormalColor = false;
 
         playerCollider.enabled = false;
     }
@@ -134,6 +158,7 @@ public class Player : MonoBehaviour {
         hitpointManager.ResetHitpoints();
 
         spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1.0f);
+        blinkNormalColor = true;
 
         playerCollider.enabled = true;
     }
@@ -147,6 +172,8 @@ public class Player : MonoBehaviour {
         if (isDead)
         {
             curRespawnCooldown -= Time.deltaTime;
+
+            Blink();
 
             if (curRespawnCooldown <= 0.0f)
             {
