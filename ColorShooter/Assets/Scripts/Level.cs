@@ -96,9 +96,17 @@ public class Level : MonoBehaviour
 
                 int numSpawns = UnityEngine.Random.Range(min, max);
 
+                float numPlayerDifficultyIncrease = 1.0f  + (float)(GameManager.Instance.RegisteredPlayers - 1) * 0.5f;
+             
+                numPlayerDifficultyIncrease = Mathf.Max(numPlayerDifficultyIncrease, 1.0f);
+                Debug.Log(numPlayerDifficultyIncrease);
+
                 for (int i = 0; i < numSpawns; i++)
                 {
-                    SpawnMonster(newEncounter.enemy, enemyStrength * newEncounter.multiplier);
+                    float tmpDifficulty = enemyStrength * newEncounter.multiplier;
+                    tmpDifficulty *= numPlayerDifficultyIncrease;
+
+                    SpawnMonster(newEncounter.enemy, tmpDifficulty);
                 }
             }
 
