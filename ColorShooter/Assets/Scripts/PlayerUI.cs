@@ -6,6 +6,7 @@ public class PlayerUI : MonoBehaviour {
 
     public Player player;
     private Image panel;
+    private Image shipImage;
     public Text bulletSpeed;
     public Text power;
     public Text shot;
@@ -13,6 +14,7 @@ public class PlayerUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        
         panel = GetComponentInChildren<Image>();
 
         if (!player)

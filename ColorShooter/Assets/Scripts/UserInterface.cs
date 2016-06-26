@@ -6,6 +6,15 @@ public class UserInterface : MonoBehaviour {
 
     public Text scoreText;
     public Text lifeText;
+    public Player player1;
+    public Player player2;
+    public Player player3;
+    public Player player4;
+
+    public PlayerUI playerUI_1;
+    public PlayerUI playerUI_2;
+    public PlayerUI playerUI_3;
+    public PlayerUI playerUI_4;
     
 
 	// Use this for initialization
@@ -15,8 +24,28 @@ public class UserInterface : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update () 
+    {
+        if (player1)
+            playerUI_1.gameObject.SetActive(true);
+        else
+            playerUI_1.gameObject.SetActive(false);
+
+        if (player2)
+            playerUI_2.gameObject.SetActive(true);
+        else
+            playerUI_2.gameObject.SetActive(false);
+
+        if (player1)
+            playerUI_2.gameObject.SetActive(true);
+        else
+            playerUI_2.gameObject.SetActive(false);
+
+        if (player1)
+            playerUI_2.gameObject.SetActive(true);
+        else
+            playerUI_2.gameObject.SetActive(false);
+
 	}
 
     public void UpdateScore(int score)

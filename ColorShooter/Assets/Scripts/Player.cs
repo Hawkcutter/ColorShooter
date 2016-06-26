@@ -19,6 +19,8 @@ public class Player : MonoBehaviour {
     string boostLeftName;
     string boostRightName;
 
+    public bool controllerRegistered;
+
 
     public Gun mainWeapon;
 
@@ -60,7 +62,7 @@ public class Player : MonoBehaviour {
         curRespawnCooldown = respawnCooldown;
 
         rb2D = GetComponent<Rigidbody2D>();
-        horizontalAxisName = "Horizontal_P" + playerID;
+        /*horizontalAxisName = "Horizontal_P" + playerID;
         verticalAxisName = "Vertical_P" + playerID;
         shootGreenName = "FireGreen_P" + playerID;
         shootRedName = "FireRed_P" + playerID;
@@ -68,7 +70,17 @@ public class Player : MonoBehaviour {
         shootYellowName = "FireYellow_P" + playerID;
 
         boostLeftName = "BoostLeft_P" + playerID;
-        boostRightName = "BoostRight_P" + playerID;
+        boostRightName = "BoostRight_P" + playerID;*/
+
+        horizontalAxisName = "Horizontal_P" + 11;
+        verticalAxisName = "Vertical_P" + 11;
+        shootGreenName = "FireGreen_P" + 11;
+        shootRedName = "FireRed_P" + 11;
+        shootBlueName = "FireBlue_P" + 11;
+        shootYellowName = "FireYellow_P" + 11;
+
+        boostLeftName = "BoostLeft_P" + 11;
+        boostRightName = "BoostRight_P" + 11;
 
         xMin = GameManager.Instance.LevelBoundsMin.x;
         xMax = GameManager.Instance.LevelBoundsMax.x;
@@ -79,21 +91,22 @@ public class Player : MonoBehaviour {
         curBoostCooldown = 0.0f;
 
         GameManager.Instance.RegisterPlayer(this);
+        this.gameObject.SetActive(false);
     }
 
     public void register(int ID)
     {
-        controllerID = ID;
+        this.horizontalAxisName = "Horizontal_P" + ID;
+        this.verticalAxisName = "Vertical_P" + ID;
+        this.shootGreenName = "FireGreen_P" + ID;
+        this.shootRedName = "FireRed_P" + ID;
+        this.shootBlueName = "FireBlue_P" + ID;
+        this.shootYellowName = "FireYellow_P" + ID;
 
-        horizontalAxisName = "Horizontal_P" + ID;
-        verticalAxisName = "Vertical_P" + ID;
-        shootGreenName = "FireGreen_P" + ID;
-        shootRedName = "FireRed_P" + ID;
-        shootBlueName = "FireBlue_P" + ID;
-        shootYellowName = "FireYellow_P" + ID;
+        this.boostLeftName = "BoostLeft_P" + ID;
+        this.boostRightName = "BoostRight_P" + ID;
 
-        boostLeftName = "BoostLeft_P" + ID;
-        boostRightName = "BoostRight_P" + ID;
+        this.controllerRegistered = true;
     }
 
     public void Killed()
@@ -127,6 +140,8 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
+
+        //Debug.Log(playerID + " " + controllerRegistered);
         curBoostDuration -= Time.deltaTime;
 
         if (isDead)

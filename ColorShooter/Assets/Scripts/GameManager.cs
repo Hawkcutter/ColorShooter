@@ -102,8 +102,12 @@ public class GameManager : MonoBehaviour
     private UniqueList<Enemy> enemies;
     private UniqueList<Projectile> projectiles;
 
-
+    [SerializeField]
     private List<Player> players;
+    private List<Player> allPlayers;
+
+    private List<int> takenControllers;
+    private int registeredPlayers;
     
 
     [SerializeField]
@@ -129,6 +133,8 @@ public class GameManager : MonoBehaviour
         projectiles = new UniqueList<Projectile>(50);
 
         players = new List<Player>();
+        allPlayers = new List<Player>();
+        takenControllers = new List<int>();
 
         if(ui)
             ui.UpdateLifes(playerBase.Lifes);
@@ -140,10 +146,92 @@ public class GameManager : MonoBehaviour
         Reset();
     }
 
+
     public void RegisterPlayer(Player player)
     {
         this.players.Add(player);
+        noOfPlayers++;
     }
+    public void RegisterControllers()
+    {
+        
+        //if(players.Count >= takenControllers.Count)
+          Player  player = players[takenControllers.Count];
+
+        
+        {
+            if (!player.controllerRegistered)
+            {
+                if (!takenControllers.Contains(1) && Input.GetKeyDown(KeyCode.Joystick1Button7))
+                {
+                    player.register(1);
+                    takenControllers.Add(1);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(2) && Input.GetKeyDown(KeyCode.Joystick2Button7))
+                {
+                    player.register(2);
+                    takenControllers.Add(2);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(3) && Input.GetKeyDown(KeyCode.Joystick3Button7))
+                {
+                    player.register(3);
+                    takenControllers.Add(3);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(4) && Input.GetKeyDown(KeyCode.Joystick4Button7))
+                {
+                    player.register(4);
+                    takenControllers.Add(4);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(5) && Input.GetKeyDown(KeyCode.Joystick5Button7))
+                {
+                    player.register(5);
+                    takenControllers.Add(5);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(6) && Input.GetKeyDown(KeyCode.Joystick6Button7))
+                {
+                    player.register(6);
+                    takenControllers.Add(6);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(7) && Input.GetKeyDown(KeyCode.Joystick7Button7))
+                {
+                    player.register(7);
+                    takenControllers.Add(7);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(8) && Input.GetKeyDown(KeyCode.Joystick8Button7))
+                {
+                    player.register(8);
+                    takenControllers.Add(8);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(9) && Input.GetKeyDown((KeyCode)KeyCode.Joystick7Button7 + 19))
+                {
+                    player.register(9);
+                    takenControllers.Add(9);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(10) && Input.GetKeyDown((KeyCode)KeyCode.Joystick7Button7 + 38))
+                {
+                    player.register(10);
+                    takenControllers.Add(10);
+                    player.gameObject.SetActive(true);
+                }
+                else if (!takenControllers.Contains(11) && Input.GetKeyDown((KeyCode)KeyCode.Joystick7Button7 + 57))
+                {
+                    player.register(11);
+                    takenControllers.Add(11);
+                    player.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
 
     public void Reset()
     {
@@ -182,6 +270,7 @@ public class GameManager : MonoBehaviour
         level[curLevelId].StartLevel(this.loop);
     }
 
+
     private void SetHighscore(int value)
     {
         if (this.highscore != value)
@@ -192,6 +281,7 @@ public class GameManager : MonoBehaviour
                 ui.UpdateScore(this.highscore);
         }
     }
+
 
     public Vector2 GetRandomSpawnPosition()
     {
@@ -256,6 +346,9 @@ public class GameManager : MonoBehaviour
         {
             Reset();
         }
+
+        if(takenControllers.Count < 4)
+            RegisterControllers();
     }
 
 
