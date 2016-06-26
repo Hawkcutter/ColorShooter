@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
 
     private List<int> takenControllers;
     private int registeredPlayers;
+    public int RegisteredPlayers { get { return takenControllers.Count; } }
     
 
     [SerializeField]

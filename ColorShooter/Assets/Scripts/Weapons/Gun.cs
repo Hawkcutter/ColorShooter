@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Gun : Weapon
 {
@@ -10,13 +11,19 @@ public class Gun : Weapon
     public bool RotateProjectileToDirection = true;
     public bool ApplyStartPos = true;
 
+    public enum GunUpgradeType { Damage, Speed, NumShots,             Count}
+
+    private int[] upgradeCounts = new int[(int)GunUpgradeType.Count];
+
+
+    /*
     [SerializeField]
     public int damageUpgradeCount = 0;
     [SerializeField]
     public int speedUpgradeCount = 0;
     [SerializeField]
     public int numShotUpgradeCount = 0;
-
+    */
     private int numProjectiles = 1;
 
     [SerializeField]
@@ -30,23 +37,29 @@ public class Gun : Weapon
     void Start()
     {
         if(IsPlayerWeapon)
-            cooldown = CooldownAtLevel[speedUpgradeCount];
+            cooldown = CooldownAtLevel[upgradeCounts[(int)GunUpgradeType.Speed]];
     }
 
     public void Reset()
     {
         if (IsPlayerWeapon)
         {
-            damageUpgradeCount = 0;
-            speedUpgradeCount = 0;
-            numShotUpgradeCount = 0;
-            cooldown = CooldownAtLevel[speedUpgradeCount];
+            upgradeCounts[(int)GunUpgradeType.Damage] = 0;
+            upgradeCounts[(int)GunUpgradeType.Speed] = 0;
+            upgradeCounts[(int)GunUpgradeType.NumShots] = 0;
 
-            numProjectiles = numShotUpgradeCount + 1;
+            cooldown = CooldownAtLevel[upgradeCounts[(int)GunUpgradeType.Speed]];
+
+            numProjectiles = upgradeCounts[(int)GunUpgradeType.NumShots] + 1;
 
             if (numProjectiles == 4)
                 numProjectiles = 5;
         }
+    }
+
+    public int GetUpgrade(GunUpgradeType type)
+    {
+        return upgradeCounts[(int)type];
     }
 
     protected override void Shoot(Vector2 startPos, Vector2 direction, ColorKey color)
@@ -56,19 +69,19 @@ public class Gun : Weapon
 
             if(IsPlayerWeapon)
             {
-                if (numShotUpgradeCount == 0)
+                if (upgradeCounts[(int)GunUpgradeType.NumShots] == 0)
                 {
                     MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
                 }
 
-                else if (numShotUpgradeCount == 1)
+                else if (upgradeCounts[(int)GunUpgradeType.NumShots] == 1)
                 {
                     MyShoot(ProjectileSpawnPoints[1].transform.position, ProjectileSpawnPoints[1].transform.up, color);
 
                     MyShoot(ProjectileSpawnPoints[2].transform.position, ProjectileSpawnPoints[2].transform.up, color);
                 }
 
-                else if (numShotUpgradeCount == 2)
+                else if (upgradeCounts[(int)GunUpgradeType.NumShots] == 2)
                 {
                     MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
 
@@ -77,7 +90,7 @@ public class Gun : Weapon
                     MyShoot(ProjectileSpawnPoints[2].transform.position, ProjectileSpawnPoints[2].transform.up, color);
                 }
 
-                else if (numShotUpgradeCount == 3)
+                else if (upgradeCounts[(int)GunUpgradeType.NumShots] == 3)
                 {
                     MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
 
@@ -108,10 +121,10 @@ public class Gun : Weapon
          if (IsPlayerWeapon)
          {
              projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
-             projectile.Speed = SpeedAtLevel[speedUpgradeCount];
+             projectile.Speed = SpeedAtLevel[upgradeCounts[(int)GunUpgradeType.Speed]];
 
 
-             int oneShotDmg = Mathf.Max((int)(DamageAtLevel[damageUpgradeCount] * perShotDmgReduce * (numProjectiles - 1)), DamageAtLevel[damageUpgradeCount]);
+             int oneShotDmg = Mathf.Max((int)(DamageAtLevel[upgradeCounts[(int)GunUpgradeType.Damage]] * perShotDmgReduce * (numProjectiles - 1)), DamageAtLevel[upgradeCounts[(int)GunUpgradeType.Damage]]);
 
              int perShotDmg = (int)Mathf.Ceil((float)oneShotDmg / numProjectiles);
 
@@ -131,37 +144,41 @@ public class Gun : Weapon
         projectile.Init(startPos, direction, color, IsPlayerWeapon);
     }
 
+   
+
     public void UpgradeAttackDamage()
     {
-        damageUpgradeCount = Mathf.Clamp(damageUpgradeCount + 1, 0, DamageAtLevel.Length - 1);
+     //   damageUpgradeCount 
+
+        upgradeCounts[(int)GunUpgradeType.Damage] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.Damage] + 1, 0, DamageAtLevel.Length - 1);
     }
 
     public void DegradeAttackDamage()
     {
-        damageUpgradeCount = Mathf.Clamp(damageUpgradeCount - 1, 0, DamageAtLevel.Length - 1);
+        upgradeCounts[(int)GunUpgradeType.Damage] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.Damage] - 1, 0, DamageAtLevel.Length - 1);
     }
 
     public void UpgradeAttackSpeed()
     {
-        speedUpgradeCount = Mathf.Clamp(speedUpgradeCount + 1, 0, SpeedAtLevel.Length - 1);
+        upgradeCounts[(int)GunUpgradeType.Speed] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.Speed] + 1, 0, SpeedAtLevel.Length - 1);
 
-        cooldown = CooldownAtLevel[speedUpgradeCount];
+        cooldown = CooldownAtLevel[upgradeCounts[(int)GunUpgradeType.Speed]];
     }
 
     public void DowngradeAttackSpeed()
     {
-        speedUpgradeCount = Mathf.Clamp(speedUpgradeCount - 1, 0, SpeedAtLevel.Length - 1);
+        upgradeCounts[(int)GunUpgradeType.Speed] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.Speed] - 1, 0, SpeedAtLevel.Length - 1);
 
-        cooldown = CooldownAtLevel[speedUpgradeCount];
+        cooldown = CooldownAtLevel[upgradeCounts[(int)GunUpgradeType.Speed]];
     }
 
 
     public void UpgradeNumAttacks()
     {
-        numShotUpgradeCount = Mathf.Clamp(numShotUpgradeCount + 1, 0, 3);
+        upgradeCounts[(int)GunUpgradeType.NumShots] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.NumShots] + 1, 0, 3);
 
 
-        numProjectiles = numShotUpgradeCount + 1;
+        numProjectiles = upgradeCounts[(int)GunUpgradeType.NumShots] + 1;
 
         if (numProjectiles == 4)
             numProjectiles = 5;
@@ -169,12 +186,43 @@ public class Gun : Weapon
 
     public void DowngradeNumAttacks()
     {
-        numShotUpgradeCount = Mathf.Clamp(numShotUpgradeCount + 1, 0, 3);
+        upgradeCounts[(int)GunUpgradeType.NumShots] = Mathf.Clamp(upgradeCounts[(int)GunUpgradeType.NumShots] - 1, 0, 3);
 
-        numProjectiles = numShotUpgradeCount + 1;
+        numProjectiles = upgradeCounts[(int)GunUpgradeType.NumShots] + 1;
 
         if (numProjectiles == 4)
             numProjectiles = 5;
     }
 
+
+    public void LoseAnyUpgrade()
+    {
+
+        List<int> avaibleUpgradeIds = new List<int>();
+
+        for (int i = 0; i < upgradeCounts.Length; i++)
+        {
+            if (upgradeCounts[i] == 3)
+            {
+                avaibleUpgradeIds.Add(i);
+            }
+        }
+
+        int rand = UnityEngine.Random.Range(0, avaibleUpgradeIds.Count);
+
+        if (rand == (int)GunUpgradeType.NumShots)
+        {
+            DowngradeNumAttacks();
+        }
+
+        else if (rand == (int)GunUpgradeType.Damage)
+        {
+            DegradeAttackDamage();
+        }
+
+        else if (rand == (int)GunUpgradeType.Speed)
+        {
+            DowngradeAttackSpeed();
+        }
+    }
 }
