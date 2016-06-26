@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
 
     public void Reset()
     {
-        Debug.Log("reset game");
+
 
         curLevelId = 0;
         loop = 0;
