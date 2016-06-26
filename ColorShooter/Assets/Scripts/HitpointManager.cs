@@ -28,22 +28,19 @@ public class HitpointManager : MonoBehaviour
         if (RootObject == null)
             RootObject = gameObject;
 
-        if (curLife <= 0)
-        {
-            Debug.Log(gameObject.name + " has 0 life upon construction, destroying it!");
-            Destroy(RootObject);
-        }
-
-        else
-        {
             this.maxLife = curLife;
-        }
+        
 
         enemy = RootObject.GetComponent<Enemy>();
 
         if (!enemy)
+        {
             player = RootObject.GetComponent<Player>();
-
+            if (player){
+                curLife = 1;
+            maxLife = 1;
+            }
+        }
         else
         {
             this.maxLife = enemy.Hitpoints;
