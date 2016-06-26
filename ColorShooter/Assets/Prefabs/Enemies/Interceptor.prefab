@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e22eabb12092c749b301e68c4d94af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 20
+  hitpoints: 80
   baseDmg: 5
   score: 50
   shieldObject: {fileID: 0}

@@ -45,4 +45,9 @@ public abstract class Weapon : MonoBehaviour
         GameObject newObj = Instantiate(prefab.gameObject);
         return newObj.GetComponent<Projectile>();
     }
+
+    public void RandomizeCooldown()
+    {
+        this.curCooldown = Random.value * cooldown;
+    }
 }
