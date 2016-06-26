@@ -483,6 +483,10 @@ Prefab:
       propertyPath: baseDamagedEffect
       value: 
       objectReference: {fileID: 945494926}
+    - target: {fileID: 11454796, guid: fbc0cabd0edb0834c953b654b8aa57f3, type: 2}
+      propertyPath: upgrChance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbc0cabd0edb0834c953b654b8aa57f3, type: 2}
   m_IsPrefabParent: 0

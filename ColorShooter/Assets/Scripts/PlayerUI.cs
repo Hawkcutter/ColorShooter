@@ -29,12 +29,12 @@ public class PlayerUI : MonoBehaviour {
 	void Update () 
     {
         if (bulletSpeed)
-            bulletSpeed.text = "Bulletspeed: " + (player.mainWeapon as Gun).speedUpgradeCount;
+            bulletSpeed.text = "Bulletspeed: " + (player.mainWeapon as Gun).GetUpgrade(Gun.GunUpgradeType.Speed);
 
         if (power)
-            power.text = "Power: " + (player.mainWeapon as Gun).damageUpgradeCount;
+            power.text = "Power: " + (player.mainWeapon as Gun).GetUpgrade(Gun.GunUpgradeType.Damage);
 
         if (shot)
-            shot.text = "Shot: " +(player.mainWeapon as Gun).numShotUpgradeCount;
+            shot.text = "Shot: " + (player.mainWeapon as Gun).GetUpgrade(Gun.GunUpgradeType.NumShots);
 	}
 }
