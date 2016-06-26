@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class Gun : Weapon
 {
@@ -193,4 +194,35 @@ public class Gun : Weapon
             numProjectiles = 5;
     }
 
+
+    public void LoseAnyUpgrade()
+    {
+
+        List<int> avaibleUpgradeIds = new List<int>();
+
+        for (int i = 0; i < upgradeCounts.Length; i++)
+        {
+            if (upgradeCounts[i] == 3)
+            {
+                avaibleUpgradeIds.Add(i);
+            }
+        }
+
+        int rand = UnityEngine.Random.Range(0, avaibleUpgradeIds.Count);
+
+        if (rand == (int)GunUpgradeType.NumShots)
+        {
+            DowngradeNumAttacks();
+        }
+
+        else if (rand == (int)GunUpgradeType.Damage)
+        {
+            DegradeAttackDamage();
+        }
+
+        else if (rand == (int)GunUpgradeType.Speed)
+        {
+            DowngradeAttackSpeed();
+        }
+    }
 }

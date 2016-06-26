@@ -21,7 +21,6 @@ public class Player : MonoBehaviour {
 
     public bool controllerRegistered;
 
-
     public Gun mainWeapon;
 
     float xMin, xMax, yMin, yMax;
@@ -141,6 +140,8 @@ public class Player : MonoBehaviour {
         blinkNormalColor = false;
 
         playerCollider.enabled = false;
+
+        mainWeapon.LoseAnyUpgrade();
     }
 
     public void Reset()
