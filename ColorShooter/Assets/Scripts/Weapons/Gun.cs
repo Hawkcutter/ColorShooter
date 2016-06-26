@@ -17,15 +17,33 @@ public class Gun : Weapon
     [SerializeField]
     public int numShotUpgradeCount = 0;
 
+    private int numProjectiles = 1;
+
     public int[] DamageAtLevel;
     public float[] CooldownAtLevel;
     public float[] SpeedAtLevel;
-    public GameObject[] ProjectileSpawnPoint;
+    public GameObject[] ProjectileSpawnPoints;
 
     void Start()
     {
         if(IsPlayerWeapon)
             cooldown = CooldownAtLevel[speedUpgradeCount];
+    }
+
+    public void Reset()
+    {
+        if (IsPlayerWeapon)
+        {
+            damageUpgradeCount = 0;
+            speedUpgradeCount = 0;
+            numShotUpgradeCount = 0;
+            cooldown = CooldownAtLevel[speedUpgradeCount];
+
+            numProjectiles = numShotUpgradeCount + 1;
+
+            if (numProjectiles == 4)
+                numProjectiles = 5;
+        }
     }
 
     protected override void Shoot(Vector2 startPos, Vector2 direction, ColorKey color)
@@ -37,36 +55,36 @@ public class Gun : Weapon
             {
                 if (numShotUpgradeCount == 0)
                 {
-                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
                 }
 
                 else if (numShotUpgradeCount == 1)
                 {
-                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[1].transform.position, ProjectileSpawnPoints[1].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[2].transform.position, ProjectileSpawnPoints[2].transform.up, color);
                 }
 
                 else if (numShotUpgradeCount == 2)
                 {
-                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[1].transform.position, ProjectileSpawnPoints[1].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[2].transform.position, ProjectileSpawnPoints[2].transform.up, color);
                 }
 
                 else if (numShotUpgradeCount == 3)
                 {
-                    MyShoot(ProjectileSpawnPoint[0].transform.position, ProjectileSpawnPoint[0].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[0].transform.position, ProjectileSpawnPoints[0].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[1].transform.position, ProjectileSpawnPoint[1].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[1].transform.position, ProjectileSpawnPoints[1].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[2].transform.position, ProjectileSpawnPoint[2].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[2].transform.position, ProjectileSpawnPoints[2].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[3].transform.position, ProjectileSpawnPoint[3].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[3].transform.position, ProjectileSpawnPoints[3].transform.up, color);
 
-                    MyShoot(ProjectileSpawnPoint[4].transform.position, ProjectileSpawnPoint[4].transform.up, color);
+                    MyShoot(ProjectileSpawnPoints[4].transform.position, ProjectileSpawnPoints[4].transform.up, color);
                 }
             }
 
@@ -86,46 +104,72 @@ public class Gun : Weapon
 
          if (IsPlayerWeapon)
          {
-
              projectile = InstantiateProjectile(ColorKey.GetProjectileFromColor(color.Key)) as LinearProjectile;
              projectile.Speed = SpeedAtLevel[speedUpgradeCount];
-             projectile.Damage = DamageAtLevel[damageUpgradeCount];
+
+             int finalDamage = (int) Mathf.Ceil((float)DamageAtLevel[damageUpgradeCount] / (numShotUpgradeCount + 1));
+
+             Debug.Log(finalDamage);
+             projectile.Damage = finalDamage;
          }
 
 
          else
              projectile = InstantiateProjectile(projectilePrefab) as LinearProjectile;
 
-
-
-
         if (ApplyStartPos)
             projectile.transform.position = startPos;
 
-        //TODO:
         if (RotateProjectileToDirection)
             projectile.transform.up = direction;
 
         projectile.Init(startPos, direction, color, IsPlayerWeapon);
     }
 
-    public void UpgradeDamage()
+    public void UpgradeAttackDamage()
     {
         damageUpgradeCount = Mathf.Clamp(damageUpgradeCount + 1, 0, DamageAtLevel.Length - 1);
-
-
     }
 
-    public void UpgradeSpeed()
+    public void DegradeAttackDamage()
+    {
+        damageUpgradeCount = Mathf.Clamp(damageUpgradeCount - 1, 0, DamageAtLevel.Length - 1);
+    }
+
+    public void UpgradeAttackSpeed()
     {
         speedUpgradeCount = Mathf.Clamp(speedUpgradeCount + 1, 0, SpeedAtLevel.Length - 1);
-    }
-
-    public void UpgradeNumShots()
-    {
-        speedUpgradeCount = Mathf.Clamp(speedUpgradeCount + 1, 0, CooldownAtLevel.Length - 1);
 
         cooldown = CooldownAtLevel[speedUpgradeCount];
+    }
+
+    public void DowngradeAttackSpeed()
+    {
+        speedUpgradeCount = Mathf.Clamp(speedUpgradeCount - 1, 0, SpeedAtLevel.Length - 1);
+
+        cooldown = CooldownAtLevel[speedUpgradeCount];
+    }
+
+
+    public void UpgradeNumAttacks()
+    {
+        numShotUpgradeCount = Mathf.Clamp(numShotUpgradeCount + 1, 0, 3);
+
+
+        numProjectiles = numShotUpgradeCount + 1;
+
+        if (numProjectiles == 4)
+            numProjectiles = 5;
+    }
+
+    public void DowngradeNumAttacks()
+    {
+        numShotUpgradeCount = Mathf.Clamp(numShotUpgradeCount + 1, 0, 3);
+
+        numProjectiles = numShotUpgradeCount + 1;
+
+        if (numProjectiles == 4)
+            numProjectiles = 5;
     }
 
 }

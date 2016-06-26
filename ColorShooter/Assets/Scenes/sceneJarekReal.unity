@@ -138,6 +138,18 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1050178198}
+    - target: {fileID: 22371444, guid: cdbb714ee7c44084c9722b54241e5246, type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1950960927
+      objectReference: {fileID: 0}
+    - target: {fileID: 22371444, guid: cdbb714ee7c44084c9722b54241e5246, type: 2}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22371444, guid: cdbb714ee7c44084c9722b54241e5246, type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cdbb714ee7c44084c9722b54241e5246, type: 2}
   m_IsPrefabParent: 0
@@ -383,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifes: 4
+  Indestructible: 0
 --- !u!50 &938394367
 Rigidbody2D:
   serializedVersion: 2

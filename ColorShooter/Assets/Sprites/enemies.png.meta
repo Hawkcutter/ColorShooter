@@ -1,0 +1,593 @@
+fileFormatVersion: 2
+guid: 1bba31c6cd372254a85b2fa586923193
+timeCreated: 1466898069
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: IntercepterGreen
+    21300002: ScoutGreen
+    21300004: GhostGreen
+    21300006: ChangerGreen
+    21300008: BugGreen
+    21300010: GoliathGreen
+    21300012: IntercepterRed
+    21300014: ScoutRed
+    21300016: GhostRed
+    21300018: ChangerRed
+    21300020: BugRed
+    21300022: GoliathRed
+    21300024: IntercepterBlue
+    21300026: ScoutBlue
+    21300028: GhostBlue
+    21300030: ChangerBlue
+    21300032: BugBlue
+    21300034: GoliathBlue
+    21300036: IntercepterYellow
+    21300038: ScoutYellow
+    21300040: GhostYellow
+    21300042: ChangerYellow
+    21300044: BugYellow
+    21300046: GoliathYellow
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 48
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: IntercepterGreen
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 43}
+        - {x: 2, y: 39}
+        - {x: 3, y: 34}
+        - {x: -1, y: 33}
+        - {x: 2, y: 42}
+        - {x: 0, y: 43}
+        - {x: -8, y: 43}
+        - {x: -28, y: 32}
+        - {x: -37, y: -4}
+        - {x: -37, y: -44}
+        - {x: -21, y: -58}
+        - {x: 11, y: -58}
+        - {x: 36, y: -46}
+        - {x: 37, y: -44}
+        - {x: 37, y: 14}
+        - {x: 31, y: 43}
+    - name: ScoutGreen
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.53200006, y: 0.4199996}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1.9039917, y: 45.24005}
+        - {x: -8.096008, y: 45.24005}
+        - {x: -24.096008, y: 28.240051}
+        - {x: -24.096008, y: -26.759949}
+        - {x: -20.096008, y: -39.75995}
+        - {x: 15.903992, y: -39.75995}
+        - {x: 22.903992, y: -27.759949}
+        - {x: 22.903992, y: 10.240051}
+        - {x: 18.903992, y: 18.240051}
+    - name: GhostGreen
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 50}
+        - {x: -39, y: 39}
+        - {x: -39, y: -20}
+        - {x: -32, y: -47}
+        - {x: 25, y: -47}
+        - {x: 35, y: -44}
+        - {x: 35, y: 32}
+        - {x: 14, y: 50}
+    - name: ChangerGreen
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 45}
+        - {x: -34, y: 42}
+        - {x: -39, y: 37}
+        - {x: -39, y: -20}
+        - {x: -20, y: -46}
+        - {x: 24, y: -46}
+        - {x: 37, y: -35}
+        - {x: 37, y: 24}
+        - {x: 31, y: 45}
+    - name: BugGreen
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 31}
+        - {x: -18, y: 22}
+        - {x: -20, y: 19}
+        - {x: -20, y: -3}
+        - {x: -18, y: -11}
+        - {x: -11, y: -17}
+        - {x: 9, y: -17}
+        - {x: 16, y: -12}
+        - {x: 19, y: -7}
+        - {x: 19, y: 20}
+        - {x: 15, y: 31}
+    - name: GoliathGreen
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 55}
+        - {x: -58, y: 28}
+        - {x: -60, y: 26}
+        - {x: -60, y: -36}
+        - {x: -53, y: -56}
+        - {x: 49, y: -56}
+        - {x: 58, y: -41}
+        - {x: 58, y: 28}
+        - {x: 51, y: 55}
+    - name: IntercepterRed
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 43}
+        - {x: 2, y: 39}
+        - {x: 3, y: 34}
+        - {x: -1, y: 33}
+        - {x: 2, y: 42}
+        - {x: 0, y: 43}
+        - {x: -8, y: 43}
+        - {x: -28, y: 32}
+        - {x: -37, y: -4}
+        - {x: -37, y: -44}
+        - {x: -21, y: -58}
+        - {x: 11, y: -58}
+        - {x: 36, y: -46}
+        - {x: 37, y: -44}
+        - {x: 37, y: 14}
+        - {x: 31, y: 43}
+    - name: ScoutRed
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 256
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.53733337, y: 0.43599987}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 2.2213287, y: 43.192017}
+        - {x: -7.7786713, y: 43.192017}
+        - {x: -23.778671, y: 26.192017}
+        - {x: -23.778671, y: -28.807983}
+        - {x: -19.778671, y: -41.807983}
+        - {x: 16.221329, y: -41.807983}
+        - {x: 23.221329, y: -29.807983}
+        - {x: 23.221329, y: 8.192017}
+        - {x: 19.221329, y: 16.192017}
+    - name: GhostRed
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 50}
+        - {x: -39, y: 39}
+        - {x: -39, y: -20}
+        - {x: -32, y: -47}
+        - {x: 25, y: -47}
+        - {x: 35, y: -44}
+        - {x: 35, y: 32}
+        - {x: 14, y: 50}
+    - name: ChangerRed
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 45}
+        - {x: -34, y: 42}
+        - {x: -39, y: 37}
+        - {x: -39, y: -20}
+        - {x: -20, y: -46}
+        - {x: 24, y: -46}
+        - {x: 37, y: -35}
+        - {x: 37, y: 24}
+        - {x: 31, y: 45}
+    - name: BugRed
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 31}
+        - {x: -18, y: 22}
+        - {x: -20, y: 19}
+        - {x: -20, y: -3}
+        - {x: -18, y: -11}
+        - {x: -11, y: -17}
+        - {x: 9, y: -17}
+        - {x: 16, y: -12}
+        - {x: 19, y: -7}
+        - {x: 19, y: 20}
+        - {x: 15, y: 31}
+    - name: GoliathRed
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 55}
+        - {x: -58, y: 28}
+        - {x: -60, y: 26}
+        - {x: -60, y: -36}
+        - {x: -53, y: -56}
+        - {x: 49, y: -56}
+        - {x: 58, y: -41}
+        - {x: 58, y: 28}
+        - {x: 51, y: 55}
+    - name: IntercepterBlue
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 43}
+        - {x: 2, y: 39}
+        - {x: 3, y: 34}
+        - {x: -1, y: 33}
+        - {x: 2, y: 42}
+        - {x: 0, y: 43}
+        - {x: -8, y: 43}
+        - {x: -28, y: 32}
+        - {x: -37, y: -4}
+        - {x: -37, y: -44}
+        - {x: -21, y: -58}
+        - {x: 11, y: -58}
+        - {x: 36, y: -46}
+        - {x: 37, y: -44}
+        - {x: 37, y: 14}
+        - {x: 31, y: 43}
+    - name: ScoutBlue
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.51600003, y: 0.45200002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.9519958, y: 41.143997}
+        - {x: -6.048004, y: 41.143997}
+        - {x: -22.048004, y: 24.143997}
+        - {x: -22.048004, y: -30.856003}
+        - {x: -18.048004, y: -43.856003}
+        - {x: 17.951996, y: -43.856003}
+        - {x: 24.951996, y: -31.856003}
+        - {x: 24.951996, y: 6.143997}
+        - {x: 20.951996, y: 14.143997}
+    - name: GhostBlue
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 50}
+        - {x: -39, y: 39}
+        - {x: -39, y: -20}
+        - {x: -32, y: -47}
+        - {x: 25, y: -47}
+        - {x: 35, y: -44}
+        - {x: 35, y: 32}
+        - {x: 14, y: 50}
+    - name: ChangerBlue
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 45}
+        - {x: -34, y: 42}
+        - {x: -39, y: 37}
+        - {x: -39, y: -20}
+        - {x: -20, y: -46}
+        - {x: 24, y: -46}
+        - {x: 37, y: -35}
+        - {x: 37, y: 24}
+        - {x: 31, y: 45}
+    - name: BugBlue
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 31}
+        - {x: -18, y: 22}
+        - {x: -20, y: 19}
+        - {x: -20, y: -3}
+        - {x: -18, y: -11}
+        - {x: -11, y: -17}
+        - {x: 9, y: -17}
+        - {x: 16, y: -12}
+        - {x: 19, y: -7}
+        - {x: 19, y: 20}
+        - {x: 15, y: 31}
+    - name: GoliathBlue
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 55}
+        - {x: -58, y: 28}
+        - {x: -60, y: 26}
+        - {x: -60, y: -36}
+        - {x: -53, y: -56}
+        - {x: 49, y: -56}
+        - {x: 58, y: -41}
+        - {x: 58, y: 28}
+        - {x: 51, y: 55}
+    - name: IntercepterYellow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3, y: 43}
+        - {x: 2, y: 39}
+        - {x: 3, y: 34}
+        - {x: -1, y: 33}
+        - {x: 2, y: 42}
+        - {x: 0, y: 43}
+        - {x: -8, y: 43}
+        - {x: -28, y: 32}
+        - {x: -37, y: -4}
+        - {x: -37, y: -44}
+        - {x: -21, y: -58}
+        - {x: 11, y: -58}
+        - {x: 36, y: -46}
+        - {x: 37, y: -44}
+        - {x: 37, y: 14}
+        - {x: 31, y: 43}
+    - name: ScoutYellow
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.52666664, y: 0.4466666}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.58667, y: 41.826675}
+        - {x: -6.41333, y: 41.826675}
+        - {x: -22.41333, y: 24.826675}
+        - {x: -22.41333, y: -30.173325}
+        - {x: -18.41333, y: -43.173325}
+        - {x: 17.58667, y: -43.173325}
+        - {x: 24.58667, y: -31.173325}
+        - {x: 24.58667, y: 6.8266754}
+        - {x: 20.58667, y: 14.826675}
+    - name: GhostYellow
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -21, y: 50}
+        - {x: -39, y: 39}
+        - {x: -39, y: -20}
+        - {x: -32, y: -47}
+        - {x: 25, y: -47}
+        - {x: 35, y: -44}
+        - {x: 35, y: 32}
+        - {x: 14, y: 50}
+    - name: ChangerYellow
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 45}
+        - {x: -34, y: 42}
+        - {x: -39, y: 37}
+        - {x: -39, y: -20}
+        - {x: -20, y: -46}
+        - {x: 24, y: -46}
+        - {x: 37, y: -35}
+        - {x: 37, y: 24}
+        - {x: 31, y: 45}
+    - name: BugYellow
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -6, y: 31}
+        - {x: -18, y: 22}
+        - {x: -20, y: 19}
+        - {x: -20, y: -3}
+        - {x: -18, y: -11}
+        - {x: -11, y: -17}
+        - {x: 9, y: -17}
+        - {x: 16, y: -12}
+        - {x: 19, y: -7}
+        - {x: 19, y: 20}
+        - {x: 15, y: 31}
+    - name: GoliathYellow
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 55}
+        - {x: -58, y: 28}
+        - {x: -60, y: 26}
+        - {x: -60, y: -36}
+        - {x: -53, y: -56}
+        - {x: 49, y: -56}
+        - {x: 58, y: -41}
+        - {x: 58, y: 28}
+        - {x: 51, y: 55}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

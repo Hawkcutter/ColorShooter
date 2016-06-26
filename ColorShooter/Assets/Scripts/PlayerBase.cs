@@ -21,7 +21,7 @@ public class PlayerBase : MonoBehaviour
         if (enemy)
         {
             if(!Indestructible)
-                lifes -= enemy.BreakThroughDamage;
+                lifes -= enemy.BaseDmg;
 
             if (lifes <= 0)
             {

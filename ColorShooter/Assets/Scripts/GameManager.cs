@@ -6,24 +6,68 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [ReadOnly]
+    [SerializeField]
+    private int highscore;
+    public int Highscore { get { return highscore; } set { SetHighscore(value); } }
+
+    [ReadOnly]
+    [SerializeField]
+    private float enemyStrengthFactor = 1.0f;
+
+    [Header("Scene Objects")]
     public UserInterface ui;
     
-    [SerializeField]
-    private int playerBaseLifes = 10;
-
     [SerializeField]
     private PlayerBase playerBase;
 
     [SerializeField]
+    private GameObject levelBoundsMin;
+    public Vector2 LevelBoundsMin { get { return levelBoundsMin.transform.position; } }
+
+    [SerializeField]
+    private GameObject levelBoundsMax;
+    public Vector2 LevelBoundsMax { get { return levelBoundsMax.transform.position; } }
+
+    [SerializeField]
     private SpawnZone[] spawnZones;
 
-    private float gameTime;
 
+    [Header("Debug")]
     public bool SpawnEnemies = true;
 
-    [Header("Score and Difficulty")]
+    [ReadOnly]
     [SerializeField]
-    private float gameTimeToMaxDifficulty = 300.0f;
+    private float roundTime;
+
+    [Header("Score and Difficulty")]
+
+    [SerializeField]
+    private int playerBaseLifes = 10;
+
+    [SerializeField]
+    private float diffiIncreaseFactor = 0.25f;
+
+    [SerializeField]
+    private float timeToMaxDiff = 300.0f;
+
+    private int difficultyPower = 2;
+
+    private float timeToNextScoreIncrease = 5.0f;
+
+    [SerializeField]
+    private float upgrChance = 0.0f;
+    [SerializeField]
+    private float upgrChanceInc = 0.05f;
+
+    [SerializeField]
+    private float enemySpawnCD = 1.0f;
+    private float enemySpawnCDTotal;
+    private float curEnemySpawnCD;
+    [SerializeField]
+    private float enemySpawnCDReduce = 0.95f;
+    [SerializeField]
+    private float enemySpawnCDMin = 1.0f;
     [ReadOnly]
     [SerializeField]
     private float curDifficultyPercent;
@@ -33,13 +77,6 @@ public class GameManager : MonoBehaviour
     [ReadOnly]
     [SerializeField]
     private int maxEnemyDifficulty;
-    private float timeToNextScoreIncrease = 5.0f;
-    private int highscore;
-    public int Highscore { get { return highscore; } set { SetHighscore(value); } }
-
-    [SerializeField]
-    private float maxSpawnCooldown = 1.0f;
-    private float curSpawnCooldown;
 
     [Header("LayerNames")]
     [SerializeField]
@@ -61,14 +98,16 @@ public class GameManager : MonoBehaviour
     private LinearProjectile yellowBulletPrefab;
 
     [SerializeField]
+    private GameObject upgradePrefab;
+
+    [SerializeField]
     private Enemy[] enemyPrefabs;
     private List<List<Enemy>> difficultySortedEnemyPrefabs;
 
     private UniqueList<Enemy> enemies;
     private UniqueList<Projectile> projectiles;
 
-    [SerializeField]
-    private int difficultyPower = 5;
+    private List<Player> players;
 
     void Awake()
     {
@@ -91,19 +130,36 @@ public class GameManager : MonoBehaviour
         enemies = new UniqueList<Enemy>(10);
         projectiles = new UniqueList<Projectile>(50);
 
+        players = new List<Player>();
+
         if(ui)
             ui.UpdateLifes(playerBase.Lifes);
 
-      
+        enemySpawnCDTotal = enemySpawnCD;
+    }
+
+    void Start()
+    {
+        Reset();
+    }
+
+    public void RegisterPlayer(Player player)
+    {
+        this.players.Add(player);
     }
 
     public void Reset()
     {
+        Debug.Log("reset game");
+
+        upgrChance = 0;
         curDifficulty = 0;
-        gameTime = 0.0f;
+        roundTime = 0.0f;
         curDifficultyPercent = 0.0f;
-        curSpawnCooldown = 0.0f;
-        
+        curEnemySpawnCD = 0.0f;
+        enemySpawnCD = enemySpawnCDTotal;
+
+        playerBase.SetLifes(this.playerBaseLifes);
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -118,6 +174,11 @@ public class GameManager : MonoBehaviour
                 Destroy(projectiles.Get(i).gameObject);
         }
 
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].Reset();
+        }
+
         playerBase.SetLifes(playerBaseLifes);
 
         Highscore = 0;
@@ -125,10 +186,13 @@ public class GameManager : MonoBehaviour
 
     private void SetHighscore(int value)
     {
-        this.highscore = value;
+        if (this.highscore != value)
+        {
+            this.highscore = value;
 
-        if (ui)
-            ui.UpdateScore(this.highscore);
+            if (ui)
+                ui.UpdateScore(this.highscore);
+        }
     }
 
     void CreatePrefabList()
@@ -173,8 +237,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
     Enemy GetEnemyPrefab(int difficulty)
     {
         difficulty = Mathf.Clamp(difficulty, 0, difficultySortedEnemyPrefabs.Count - 1);
@@ -194,6 +256,15 @@ public class GameManager : MonoBehaviour
             val *= val;
 
         return val;
+    }
+
+    public void SpawnEnemy(GameObject prefab)
+    {
+        GameObject createdEnemy = Instantiate(prefab.gameObject);
+
+        createdEnemy.transform.position = GetRandomSpawnPosition();
+
+        createdEnemy.GetComponent<Enemy>().Init(this.enemyStrengthFactor);
     }
     
     void SpawnEnemy()
@@ -221,42 +292,53 @@ public class GameManager : MonoBehaviour
 
             for (int i = 0; i < accumulatesChances.Length; i++)
             {
-
                 float curChance = accumulatesChances[i] / sum;
-                //blub += (curChance).ToString() + ", ";
-
 
                 if (randVal <= curChance)
                 {
                     pickId = i;
-                    break;
-                    
+                    break;               
                 }
-                 
             }
 
             Enemy prefab = GetEnemyPrefab(pickId);
 
-            GameObject createdEnemy = Instantiate(prefab.gameObject);
-
-            SpawnZone zone = spawnZones[(int)(Random.value * spawnZones.Length)];
-            createdEnemy.transform.position = zone.GetPointInsideArea();
+            SpawnEnemy(prefab.gameObject);
         }
     }
 
+    private Vector2 GetRandomSpawnPosition()
+    {
+        SpawnZone zone = spawnZones[Random.Range(0, spawnZones.Length)];
 
+        return zone.GetPointInsideArea();
+    }
 
+    private void SpawnUpgrade()
+    {
+        GameObject createdUpgrade = Instantiate(upgradePrefab);
+
+        createdUpgrade.transform.position = GetRandomSpawnPosition();
+    }
 
     void Update()
     {
-        gameTime += Time.deltaTime;
+        roundTime += Time.deltaTime;
 
-        curDifficultyPercent = gameTime / gameTimeToMaxDifficulty;
-        curDifficultyPercent = Mathf.SmoothStep(0.0f, 1.0f, curDifficultyPercent);
+        curDifficultyPercent = roundTime / timeToMaxDiff;
 
-        curDifficulty = (int)(curDifficultyPercent * maxEnemyDifficulty);
+        int tmpDifficulty = (int)(curDifficultyPercent * maxEnemyDifficulty);
 
-        curDifficulty = Mathf.Min(curDifficulty, maxEnemyDifficulty);
+        if (tmpDifficulty != curDifficulty)
+        {
+            curDifficulty = tmpDifficulty;
+
+            curDifficulty = curDifficulty % maxEnemyDifficulty;
+
+            int remainder = tmpDifficulty / maxEnemyDifficulty;
+
+            enemyStrengthFactor = 1.0f + (remainder) * diffiIncreaseFactor;
+        }
 
         timeToNextScoreIncrease -= Time.deltaTime;
 
@@ -264,13 +346,30 @@ public class GameManager : MonoBehaviour
         {
             Highscore++;
             timeToNextScoreIncrease = 5.0f;
+
+            if(enemySpawnCD > enemySpawnCDMin)
+                enemySpawnCD *= enemySpawnCDReduce;
+
+            else if(enemySpawnCD != enemySpawnCDMin)
+                enemySpawnCD = enemySpawnCDMin;
+
+            if (Random.value < upgrChance)
+            {
+                upgrChance = 0.0f;
+                SpawnUpgrade();
+            }
+
+            else 
+            {
+                upgrChance += upgrChanceInc;
+            }
         }
 
-        curSpawnCooldown -= Time.deltaTime;
+        curEnemySpawnCD -= Time.deltaTime;
 
-        if(curSpawnCooldown <= 0.0f)
+        if(curEnemySpawnCD <= 0.0f)
         {
-            curSpawnCooldown = maxSpawnCooldown;
+            curEnemySpawnCD = enemySpawnCD;
             SpawnEnemy();
         }
 
@@ -302,7 +401,7 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            Highscore += enemy.score;
+            Highscore += enemy.Score;
 
             if (ui)
             {
@@ -323,6 +422,7 @@ public class GameManager : MonoBehaviour
     {
         projectiles.Remove(projectile);
     }
+
 
 
 }

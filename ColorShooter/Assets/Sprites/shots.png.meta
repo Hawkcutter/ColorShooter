@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 066033c8d5b79404aaa2a182aaed3b5e
-timeCreated: 1466867597
+timeCreated: 1466889324
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -24,6 +24,12 @@ TextureImporter:
     21300034: white1
     21300036: white2
     21300038: white3
+    21300040: red
+    21300042: yellow
+    21300044: violet
+    21300046: green
+    21300048: blue
+    21300050: white
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -70,229 +76,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: blue0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 32}
-        - {x: -19, y: 21}
-        - {x: -19, y: -22}
-        - {x: -6, y: -29}
-        - {x: 16, y: -29}
-        - {x: 16, y: 18}
-        - {x: 9, y: 32}
-    - name: blue1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 32}
-        - {x: -18, y: -12}
-        - {x: -18, y: -32}
-        - {x: 23, y: -32}
-        - {x: 23, y: 7}
-        - {x: 12, y: 32}
-    - name: blue2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 32}
-        - {x: -16, y: 31}
-        - {x: -22, y: 5}
-        - {x: -22, y: -12}
-        - {x: -9, y: -28}
-        - {x: 2, y: -28}
-        - {x: 7, y: -27}
-        - {x: 29, y: -6}
-        - {x: 29, y: 8}
-        - {x: 12, y: 32}
-    - name: blue3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 32}
-        - {x: -25, y: 19}
-        - {x: -25, y: -17}
-        - {x: -10, y: -27}
-        - {x: 21, y: -27}
-        - {x: 21, y: 12}
-        - {x: 6, y: 32}
-    - name: red0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 32}
-        - {x: -19, y: 21}
-        - {x: -19, y: -22}
-        - {x: -6, y: -29}
-        - {x: 16, y: -29}
-        - {x: 16, y: 18}
-        - {x: 9, y: 32}
-    - name: red1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 32}
-        - {x: -18, y: -12}
-        - {x: -18, y: -32}
-        - {x: 23, y: -32}
-        - {x: 23, y: 7}
-        - {x: 12, y: 32}
-    - name: red2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 32}
-        - {x: -16, y: 31}
-        - {x: -22, y: 5}
-        - {x: -22, y: -12}
-        - {x: -9, y: -28}
-        - {x: 2, y: -28}
-        - {x: 7, y: -27}
-        - {x: 29, y: -6}
-        - {x: 29, y: 8}
-        - {x: 12, y: 32}
-    - name: red3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 32}
-        - {x: -25, y: 19}
-        - {x: -25, y: -17}
-        - {x: -10, y: -27}
-        - {x: 21, y: -27}
-        - {x: 21, y: 12}
-        - {x: 6, y: 32}
-    - name: yellow0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -16, y: 32}
-        - {x: -19, y: 21}
-        - {x: -19, y: -22}
-        - {x: -6, y: -29}
-        - {x: 16, y: -29}
-        - {x: 16, y: 18}
-        - {x: 9, y: 32}
-    - name: yellow1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -11, y: 32}
-        - {x: -18, y: -12}
-        - {x: -18, y: -32}
-        - {x: 23, y: -32}
-        - {x: 23, y: 7}
-        - {x: 12, y: 32}
-    - name: yellow2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -13, y: 32}
-        - {x: -16, y: 31}
-        - {x: -22, y: 5}
-        - {x: -22, y: -12}
-        - {x: -9, y: -28}
-        - {x: 2, y: -28}
-        - {x: 7, y: -27}
-        - {x: 29, y: -6}
-        - {x: 29, y: 8}
-        - {x: 12, y: 32}
-    - name: yellow3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 32}
-        - {x: -25, y: 19}
-        - {x: -25, y: -17}
-        - {x: -10, y: -27}
-        - {x: 21, y: -27}
-        - {x: 21, y: 12}
-        - {x: 6, y: 32}
-    - name: green0
+    - name: red
       rect:
         serializedVersion: 2
         x: 0
@@ -303,14 +87,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: 32}
-        - {x: -19, y: 21}
-        - {x: -19, y: -22}
-        - {x: -6, y: -29}
-        - {x: 16, y: -29}
-        - {x: 16, y: 18}
-        - {x: 9, y: 32}
-    - name: green1
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
+    - name: yellow
       rect:
         serializedVersion: 2
         x: 64
@@ -321,13 +109,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -11, y: 32}
-        - {x: -18, y: -12}
-        - {x: -18, y: -32}
-        - {x: 23, y: -32}
-        - {x: 23, y: 7}
-        - {x: 12, y: 32}
-    - name: green2
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
+    - name: violet
       rect:
         serializedVersion: 2
         x: 128
@@ -338,35 +131,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 32}
-        - {x: -16, y: 31}
-        - {x: -22, y: 5}
-        - {x: -22, y: -12}
-        - {x: -9, y: -28}
-        - {x: 2, y: -28}
-        - {x: 7, y: -27}
-        - {x: 29, y: -6}
-        - {x: 29, y: 8}
-        - {x: 12, y: 32}
-    - name: green3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 32}
-        - {x: -25, y: 19}
-        - {x: -25, y: -17}
-        - {x: -10, y: -27}
-        - {x: 21, y: -27}
-        - {x: 21, y: 12}
-        - {x: 6, y: 32}
-    - name: white0
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
+    - name: green
       rect:
         serializedVersion: 2
         x: 0
@@ -377,14 +153,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -16, y: 32}
-        - {x: -19, y: 21}
-        - {x: -19, y: -22}
-        - {x: -6, y: -29}
-        - {x: 16, y: -29}
-        - {x: 16, y: 18}
-        - {x: 9, y: 32}
-    - name: white1
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
+    - name: blue
       rect:
         serializedVersion: 2
         x: 64
@@ -395,13 +175,18 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -11, y: 32}
-        - {x: -18, y: -12}
-        - {x: -18, y: -32}
-        - {x: 23, y: -32}
-        - {x: 23, y: 7}
-        - {x: 12, y: 32}
-    - name: white2
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
+    - name: white
       rect:
         serializedVersion: 2
         x: 128
@@ -412,34 +197,17 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -13, y: 32}
-        - {x: -16, y: 31}
-        - {x: -22, y: 5}
-        - {x: -22, y: -12}
-        - {x: -9, y: -28}
-        - {x: 2, y: -28}
-        - {x: 7, y: -27}
-        - {x: 29, y: -6}
-        - {x: 29, y: 8}
-        - {x: 12, y: 32}
-    - name: white3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -20, y: 32}
-        - {x: -25, y: 19}
-        - {x: -25, y: -17}
-        - {x: -10, y: -27}
-        - {x: 21, y: -27}
-        - {x: 21, y: 12}
-        - {x: 6, y: 32}
+      - - {x: 7, y: 32}
+        - {x: -12, y: 32}
+        - {x: -18, y: 30}
+        - {x: -18, y: -17}
+        - {x: -9, y: -30}
+        - {x: -8, y: -32}
+        - {x: 5, y: -32}
+        - {x: 13, y: -31}
+        - {x: 18, y: -11}
+        - {x: 18, y: 16}
+        - {x: 15, y: 30}
     outline: []
   spritePackingTag: 
   userData: 

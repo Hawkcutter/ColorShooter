@@ -21,6 +21,8 @@ public class HitpointManager : MonoBehaviour
     [SerializeField]
     private GameObject RootObject;
 
+
+
     void Start()
     {
         if (RootObject == null)
@@ -41,6 +43,12 @@ public class HitpointManager : MonoBehaviour
 
         if (!enemy)
             player = RootObject.GetComponent<Player>();
+
+        else
+        {
+            this.maxLife = enemy.Hitpoints;
+            this.curLife = enemy.Hitpoints;
+        }
     }
 
     public void Damage(int damage, ColorKey bulletColor)

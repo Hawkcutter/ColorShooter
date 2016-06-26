@@ -57,7 +57,7 @@ public class ColorKey
             color =  new Color(1.0f, 0.0f, 0.0f, 1.0f);
 
         else if (key == EColorKey.Blue)
-            color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+            color = new Color(0.08f, 0.5f, 1.0f, 1.0f);
 
         else if (key == EColorKey.Green)
             color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
