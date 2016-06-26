@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &103678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 468228}
-  - 114: {fileID: 11423390}
-  m_Layer: 0
-  m_Name: Difficulty4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &110752
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 418074}
-  - 114: {fileID: 11412538}
-  m_Layer: 0
-  m_Name: Difficulty1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &117718
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +10,7 @@ GameObject:
   - 4: {fileID: 460744}
   - 114: {fileID: 11485744}
   m_Layer: 0
-  m_Name: Difficulty0
+  m_Name: Level2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,17 +31,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &154634
+--- !u!1 &151572
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 412260}
-  - 114: {fileID: 11432492}
+  - 4: {fileID: 414040}
+  - 114: {fileID: 11497126}
   m_Layer: 0
-  m_Name: Difficulty2
+  m_Name: Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,17 +62,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!1 &181648
+--- !u!1 &173690
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 493704}
-  - 114: {fileID: 11498900}
+  - 4: {fileID: 409976}
+  - 114: {fileID: 11466836}
   m_Layer: 0
-  m_Name: Difficulty3
+  m_Name: Level0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,25 +107,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 492352}
   m_RootOrder: 0
---- !u!4 &412260
+--- !u!4 &409976
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154634}
+  m_GameObject: {fileID: 173690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 492352}
-  m_RootOrder: 4
---- !u!4 &418074
+  m_RootOrder: 2
+--- !u!4 &414040
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110752}
+  m_GameObject: {fileID: 151572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -190,20 +158,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 492352}
-  m_RootOrder: 2
---- !u!4 &468228
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 492352}
-  m_RootOrder: 6
+  m_RootOrder: 4
 --- !u!4 &492352
 Transform:
   m_ObjectHideFlags: 1
@@ -217,98 +172,11 @@ Transform:
   m_Children:
   - {fileID: 409188}
   - {fileID: 442082}
+  - {fileID: 409976}
+  - {fileID: 414040}
   - {fileID: 460744}
-  - {fileID: 418074}
-  - {fileID: 412260}
-  - {fileID: 493704}
-  - {fileID: 468228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &493704
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 492352}
-  m_RootOrder: 5
---- !u!114 &11412538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters:
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
---- !u!114 &11423390
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 103678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters:
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
---- !u!114 &11432492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  encounters:
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
 --- !u!114 &11454796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,7 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highscore: 0
-  enemyStrengthFactor: 1
   ui: {fileID: 0}
   playerBase: {fileID: 0}
   levelBoundsMin: {fileID: 129424}
@@ -331,18 +198,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   SpawnEnemies: 1
+  noOfPlayers: 0
+  curLevelId: 0
+  loop: 0
   roundTime: 0
   playerBaseLifes: 100
-  diffiIncreaseFactor: 0.5
-  timeToMaxDiff: 120
   upgrChance: 0
   upgrChanceInc: 0.075
-  enemySpawnCD: 4
-  enemySpawnCDReduce: 0.975
-  enemySpawnCDMin: 1
-  curDifficultyPercent: 0
-  curDifficulty: 5
-  maxEnemyDifficulty: 0
+  timeBetweenLevel: 5
+  curTimeBetweenLevel: 0
   enemyLayerName: Enemy
   playerLayerName: Player
   redBulletPrefab: {fileID: 11406654, guid: 84e14de7f04b741449ad1b00bb02db58, type: 2}
@@ -350,19 +214,38 @@ MonoBehaviour:
   blueBulletPrefab: {fileID: 11437140, guid: 96e64e92704a1594994906df1f4f1753, type: 2}
   yellowBulletPrefab: {fileID: 11405794, guid: 398cff814ea90e84b8fdca83f24875a2, type: 2}
   upgradePrefab: {fileID: 158250, guid: 3f69961cef412444983daa100087463e, type: 2}
-  enemyPrefabs:
-  - {fileID: 11410478, guid: b8660f2996b13ca42ab8b07f469d5968, type: 2}
-  - {fileID: 11485614, guid: bc862833d862fb84e9c7101b23ca624d, type: 2}
-  - {fileID: 11494552, guid: b78868493c3224f47aeabe5057425b96, type: 2}
-  - {fileID: 11410478, guid: bacc536f725f4954ca5bfb2620de12f6, type: 2}
-  - {fileID: 11462420, guid: 9c82f54584c32d947b9daf7c0b768235, type: 2}
-  - {fileID: 11461088, guid: b596cefaa87fac2409d615e95372c642, type: 2}
-  difficulyClasses:
+  level:
   - {fileID: 11485744}
-  - {fileID: 11412538}
-  - {fileID: 11432492}
-  - {fileID: 11498900}
-  - {fileID: 11423390}
+  - {fileID: 11497126}
+--- !u!114 &11466836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlDuration: 20
+  enemyLoopIncrease: 0.25
+  enemyStrength: 1
+  curLvlDuration: 0
+  curSpawnCooldown: 0
+  encounters:
+  - enemy: {fileID: 11461088, guid: b596cefaa87fac2409d615e95372c642, type: 2}
+    spawnWeight: 2
+    spawnCooldown: 1
+    multiplier: 0.75
+    minSpawns: 1
+    maxSpawns: 3
+  - enemy: {fileID: 11494552, guid: b78868493c3224f47aeabe5057425b96, type: 2}
+    spawnWeight: 1
+    spawnCooldown: 2
+    multiplier: 0.75
+    minSpawns: 1
+    maxSpawns: 1
 --- !u!114 &11485744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,43 +257,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvlDuration: 20
+  enemyLoopIncrease: 0.25
+  enemyStrength: 1
+  curLvlDuration: 0
+  curSpawnCooldown: 0
   encounters:
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
---- !u!114 &11498900
+  - enemy: {fileID: 11406420, guid: b3974373538bde24587606bc0b5705fe, type: 2}
+    spawnWeight: 1
+    spawnCooldown: 2
+    multiplier: 1
+    minSpawns: 1
+    maxSpawns: 1
+  - enemy: {fileID: 11406420, guid: ef5687c70c873bf469bffa79a2e2998c, type: 2}
+    spawnWeight: 2
+    spawnCooldown: 1.5
+    multiplier: 1
+    minSpawns: 1
+    maxSpawns: 1
+  - enemy: {fileID: 11406420, guid: 859b65b368599154c8aea39b0584e354, type: 2}
+    spawnWeight: 3
+    spawnCooldown: 0.75
+    multiplier: 1
+    minSpawns: 1
+    maxSpawns: 3
+--- !u!114 &11497126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181648}
+  m_GameObject: {fileID: 151572}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b02cb84a5fc01944991ead3ff3c6de05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lvlDuration: 20
+  enemyLoopIncrease: 0.25
+  enemyStrength: 1
+  curLvlDuration: 0
+  curSpawnCooldown: 0
   encounters:
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
-  - enemy: {fileID: 0}
-    weight: 0
-    ignore: 0
+  - enemy: {fileID: 11410478, guid: bacc536f725f4954ca5bfb2620de12f6, type: 2}
+    spawnWeight: 1
+    spawnCooldown: 3
+    multiplier: 0.75
+    minSpawns: 1
+    maxSpawns: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
